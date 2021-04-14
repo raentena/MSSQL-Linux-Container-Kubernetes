@@ -175,7 +175,7 @@ function reinit()
     rm -rf tmpdata 
   fi 
   touch tmpdata
-  for i in vm001_rg k8s_rg cloud_rg 
+  for i in vm001_rg vm002_rg k8s_rg cloud_rg 
   do 
    az group list | grep $i &> /dev/null
    if  [ $? -eq 0  ]
@@ -190,6 +190,8 @@ function reinit()
    do
     case $opt in 
     'vm001_rg')   az group delete -n vm001_rg 
+                  break  ;;
+    'vm002_rg')   az group delete -n vm002_rg 
                   break  ;;
     'k8s_rg'  )   az group delete -n k8s_rg
                   break ;;
