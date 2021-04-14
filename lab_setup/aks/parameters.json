@@ -1,0 +1,45 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "resourceName": {
+            "value": "aks"
+        },
+        "location": {
+            "value": "southeastasia"
+        },
+        "dnsPrefix": {
+            "value": "aks-dns"
+        },
+        "kubernetesVersion": {
+            "value": "1.16.13"
+        },
+        "networkPlugin": {
+            "value": "azure"
+        },
+        "enableRBAC": {
+            "value": false
+        },
+        "enablePrivateCluster": {
+            "value": false
+        },
+        "enableHttpApplicationRouting": {
+            "value": false
+        },
+        "vnetSubnetID": {
+            "value": "/subscriptions/d6f293cf-d89b-46ad-bd1d-7f015cef5bf1/resourceGroups/aks_rg/providers/Microsoft.Network/virtualNetworks/aks_rg-vnet/subnets/default"
+        },
+        "serviceCidr": {
+            "value": "10.0.0.0/16"
+        },
+        "dnsServiceIP": {
+            "value": "10.0.0.10"
+        },
+        "dockerBridgeCidr": {
+            "value": "172.17.0.1/16"
+        },
+        "networkPolicy": {
+            "value": "calico"
+        }
+    }
+}

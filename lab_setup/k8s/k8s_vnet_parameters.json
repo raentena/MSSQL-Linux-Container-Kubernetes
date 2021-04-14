@@ -1,0 +1,41 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "value": "southeastasia"
+        },
+        "virtualNetworkName": {
+            "value": "ks8_rg-vnet"
+        },
+        "resourceGroup": {
+            "value": "k8s_rg"
+        },
+        "addressSpaces": {
+            "value": [
+                "192.168.1.0/24"
+            ]
+        },
+        "ipv6Enabled": {
+            "value": false
+        },
+        "subnetCount": {
+            "value": 1
+        },
+        "subnet0_name": {
+            "value": "default"
+        },
+        "subnet0_addressRange": {
+            "value": "192.168.1.0/24"
+        },
+        "ddosProtectionPlanEnabled": {
+            "value": false
+        },
+        "firewallEnabled": {
+            "value": false
+        },
+        "bastionEnabled": {
+            "value": false
+        }
+    }
+}
