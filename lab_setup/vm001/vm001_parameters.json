@@ -6,7 +6,7 @@
             "value": "southeastasia"
         },
         "networkInterfaceName": {
-            "value": "vm001756"
+            "value": "vmsql001801"
         },
         "networkSecurityGroupName": {
             "value": "vm001-nsg"
@@ -32,11 +32,11 @@
             "value": "default"
         },
         "virtualNetworkName": {
-            "value": "vm001_group-vnet"
+            "value": "vm001-vnet"
         },
         "addressPrefixes": {
             "value": [
-                "10.0.0.0/24"
+                "10.0.1.0/24"
             ]
         },
         "subnets": {
@@ -44,7 +44,7 @@
                 {
                     "name": "default",
                     "properties": {
-                        "addressPrefix": "10.0.0.0/24"
+                        "addressPrefix": "10.0.1.0/24"
                     }
                 }
             ]
@@ -68,7 +68,7 @@
             "value": "vm001_rg"
         },
         "osDiskType": {
-            "value": "StandardSSD_LRS"
+            "value": "Premium_LRS"
         },
         "virtualMachineSize": {
             "value": "Standard_B2s"
