@@ -4,6 +4,7 @@
 #Function LIB
 source  ./mainlib.sh
 source  ./mainsub.sh
+source  ./mainsub1.sh 
 source  ./mainsub2.sh
 
 # Variables
@@ -20,11 +21,10 @@ if [ $# -ne 1 ]
   addssh #This will create local Private/Public Key for VM
   subid  #This will catch your Azure Subscription ID
   case ${VMNAME} in
-  'vm001') createrg_vm001 ;;
-  'vm002') createrg_vm002 && config_vm002 ;; 
-  'vm003') createrg_vm003 ;; 
-  'k8s'  ) createrg_k8s  && config_k8s ;;
-  'cloud') createrg_cloud ;;
+  'vm001') createrg_vm001 && config_vm001 ;;
+  'vm002') createrg_vm002 && config_vm002 ;;
+  #'k8s'  ) createrg_k8s  && config_k8s ;;
+  #'cloud') createrg_cloud ;;
   'aks'  ) createrg_cloud_aks ;;
   'init' ) reinit   ;;
         *) my_usage ;;
