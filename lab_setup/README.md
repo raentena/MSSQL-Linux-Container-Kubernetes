@@ -1,5 +1,5 @@
-# k8_training
-k8s Training Assets
+# LinuxSQL_training
+LinuxSQL Training Assets
 
 This Hub contains the Scripts/JSON files to provision VM(s) needed for MSSQL Linux training
 
