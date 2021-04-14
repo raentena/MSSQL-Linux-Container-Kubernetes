@@ -43,7 +43,8 @@ sshhost1 > $HOME/.ssh/config
 pubip1
 
 #call yumrepo function to install and settle Docker
-yumrepo1 &> /dev/null
+#yumrepo1 &> /dev/null
+yumrepo1
 
 #Enable root key based access 
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP1  "sudo sed -i 's/^#PermitRootLogin yes/PermitRootLogin without-password/g'  /etc/ssh/sshd_config"

@@ -20,7 +20,7 @@ ssh droot@$PIP  "sudo systemctl enable docker"
 
 function pubip()
 {
-#Get IP address of vm001
+#Get IP address of vm002
 PIP=$(az vm show -d -g vm002_rg -n vm002 --query "publicIps" -o tsv)
 }
 
@@ -35,7 +35,7 @@ az network nsg rule create -g vm002_rg --nsg-name vm002-nsg -n openpublic --prio
 
 function config_vm002()
 {
-#Configure vm001 with yum, disable Firewall , enable docker and run docker
+#Configure vm002 with yum, disable Firewall , enable docker and run docker
 #Show user the PUBLIC IP address to connect 
 #Print How to connect from WINDOZE system using PUTTY
 

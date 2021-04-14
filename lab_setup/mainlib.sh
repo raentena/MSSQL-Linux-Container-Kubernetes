@@ -3,7 +3,7 @@ function my_usage()
 {
   echo 
   echo -e "\e[31mError  : No Arg or Invalid Arg Passed.. Try again\e[0m"
-  echo -e "\e[42mUsage  : $0 vm001|k8s|cloud|aks\e[0m"
+  echo -e "\e[42mUsage  : $0 vm001|vm002|k8s|cloud|aks\e[0m"
   echo -e "\e[42mExample: $0 vm001\e[0m"
   echo 
 }
@@ -42,7 +42,7 @@ function deploy_vm001()
 {
  echo "Deploying RHEL Node (vm001)....standby"
  az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_template.json -p ./${VMNAME}/${VMNAME}_parameters.json   -p  adminPublicKey="$SSHPUB" > /dev/null 
- sleep 5
+ sleep 70
  echo "Deployment of vm001 for RHEL...PASS"
 }
 
@@ -50,7 +50,7 @@ function deploy_vm002()
 {
  echo "Deploying Docker Node (vm002)....standby"
  az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_template.json -p ./${VMNAME}/${VMNAME}_parameters.json   -p  adminPublicKey="$SSHPUB" > /dev/null 
- sleep 5
+ sleep 70
  echo "Deployment of vm002 for Docker...PASS"
 }
 
