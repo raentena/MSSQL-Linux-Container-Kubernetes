@@ -61,26 +61,27 @@ echo "Deploying vnet for k8s....standby"
 az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_vnet_template.json -p ./${VMNAME}/${VMNAME}_vnet_parameters.json > /dev/null 
 sleep 10
 echo "Deployment of vnet for k8s...PASS"
+sleep 20 
+virtualNetworkId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
 
 #k8s Master VM deploy
 echo "Deploying Master Node (master)....standby"
 az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_master_template.json -p ./${VMNAME}/${VMNAME}_master_parameters.json   -p  adminPublicKey="$SSHPUB" -p virtualNetworkId="$virtualNetworkId"> /dev/null
 echo "Deployment of master for k8s...PASS"
-
 sleep 20 
-virtualNetworkId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
 networkSecurityGroupId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/master-nsg"
 
 #k8s Node1 Deploy
 echo "Deploying Worker Node1 (node1)....standby"
 az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_node1_template.json -p ./${VMNAME}/${VMNAME}_node1_parameters.json   -p  adminPublicKey="$SSHPUB" -p virtualNetworkId="$virtualNetworkId"  -p networkSecurityGroupId="$networkSecurityGroupId" > /dev/null  
 echo "Deployment of node1 for k8s...PASS"
+sleep 20 
 
 #k8s Node2 Deploy
 echo "Deploying Worker Node2 (node2)....standby"
 az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_node2_template.json -p ./${VMNAME}/${VMNAME}_node2_parameters.json   -p  adminPublicKey="$SSHPUB"  -p virtualNetworkId="$virtualNetworkId" -p networkSecurityGroupId="$networkSecurityGroupId" > /dev/null  
 echo "Deployment of node2 for k8s...PASS"
-
+sleep 20
 }
 
 
