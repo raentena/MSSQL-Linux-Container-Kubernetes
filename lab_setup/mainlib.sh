@@ -34,8 +34,7 @@ function rerun()
 function subid()
 {
 SUBID=$(az account list | grep id | awk '{print $2}'  | sed 's/"//g' | sed 's/,//g')
-virtualNetworkId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
-networkSecurityGroupId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/master-nsg"
+
 }
 
 function deploy_vm001()
@@ -67,6 +66,10 @@ echo "Deployment of vnet for k8s...PASS"
 echo "Deploying Master Node (master)....standby"
 az deployment group create -g ${VMNAME}_rg -f ./${VMNAME}/${VMNAME}_master_template.json -p ./${VMNAME}/${VMNAME}_master_parameters.json   -p  adminPublicKey="$SSHPUB" -p virtualNetworkId="$virtualNetworkId"> /dev/null
 echo "Deployment of master for k8s...PASS"
+
+sleep 20 
+virtualNetworkId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
+networkSecurityGroupId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/master-nsg"
 
 #k8s Node1 Deploy
 echo "Deploying Worker Node1 (node1)....standby"

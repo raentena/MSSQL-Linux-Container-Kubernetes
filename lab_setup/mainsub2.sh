@@ -132,9 +132,9 @@ open_pub2
 
 #Print END message 
 echo 
-echo -e "\e[93mvm002,vm003,vm004 fully deployed...you may use the Azure private key to connect to master node ip $PIP2"
+echo -e "\e[93mmaster,node1,node2 fully deployed...you may use the Azure private key to connect to master node ip $PIP2"
 echo 
-echo -e "\e[93mPublic IP address for your vm002 is $PIP2"
+echo -e "\e[93mPublic IP address for your master is $PIP2"
 echo 
 echo -e "\e[93mFrom Azure Cloud Shell, you can execute  [ ssh -i \$HOME/.ssh/id_rsa root@$PIP2 ]"
 echo
