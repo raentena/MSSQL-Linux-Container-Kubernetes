@@ -23,7 +23,7 @@ if [ $# -ne 1 ]
   case ${VMNAME} in
   'vm001') createrg_vm001 && config_vm001 ;;
   'vm002') createrg_vm002 && config_vm002 ;;
-  #'k8s'  ) createrg_k8s  && config_k8s ;;
+  'k8s'  ) createrg_k8s  && config_k8s ;;
   #'cloud') createrg_cloud ;;
   'aks'  ) createrg_cloud_aks ;;
   'init' ) reinit   ;;

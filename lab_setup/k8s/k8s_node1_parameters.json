@@ -9,7 +9,7 @@
             "value": "vm003127"
         },
         "networkSecurityGroupId": {
-            "value": "/subscriptions/f188e1ff-cb9a-4da8-817e-cee4074d645c/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/vm002-nsg"
+            "value": "/subscriptions/f188e1ff-cb9a-4da8-817e-cee4074d645c/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/master-nsg"
         },
         "subnetName": {
             "value": "default"
@@ -18,10 +18,10 @@
             "value": "/subscriptions/f188e1ff-cb9a-4da8-817e-cee4074d645c/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
         },
         "virtualMachineName": {
-            "value": "vm003"
+            "value": "node1"
         },
         "virtualMachineComputerName": {
-            "value": "vm003"
+            "value": "node1"
         },
         "virtualMachineRG": {
             "value": "k8s_rg"

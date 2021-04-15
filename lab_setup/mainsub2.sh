@@ -68,16 +68,16 @@ EOF
 function pubip2()
 {
 #Get IP address of vm002
-PIP2=$(az vm show -d -g k8s_rg -n vm002 --query "publicIps" -o tsv)
-PIP2A=$(az vm show -d -g k8s_rg -n vm002 --query "privateIps" -o tsv)
-PIP3=$(az vm show -d -g k8s_rg -n vm003 --query "privateIps" -o tsv)
-PIP4=$(az vm show -d -g k8s_rg -n vm004 --query "privateIps" -o tsv)
+PIP2=$(az vm show -d -g k8s_rg -n master --query "publicIps" -o tsv)
+PIP2A=$(az vm show -d -g k8s_rg -n master --query "privateIps" -o tsv)
+PIP3=$(az vm show -d -g k8s_rg -n node1 --query "privateIps" -o tsv)
+PIP4=$(az vm show -d -g k8s_rg -n node2 --query "privateIps" -o tsv)
 }
 
 function open_pub2()
 {
 # this is Dangerous, but for Training, NO PROBLEM , let them hack, there is nothing inside 
-az network nsg rule create -g k8s_rg --nsg-name vm002-nsg -n openpublic --priority 707 \
+az network nsg rule create -g k8s_rg --nsg-name master-nsg -n openpublic --priority 707 \
     --source-address-prefixes '*' --source-port-ranges '*' \
     --destination-address-prefixes '*' --destination-port-ranges 1-65535  --access Allow \
     --protocol Tcp --description "Open all PORT for Kubernetes Container Testing" > /dev/null 
@@ -85,7 +85,7 @@ az network nsg rule create -g k8s_rg --nsg-name vm002-nsg -n openpublic --priori
 
 function config_k8s()
 {
-#Configure vm002 with yum, disable Firewall , enable docker/kubernetes and run docker
+#Configure master with kubernetes
 #Show user the PUBLIC IP address to connect 
 #Print How to connect from WINDOZE system using PUTTY
 
@@ -102,18 +102,18 @@ mainprog2 > ku.sh
 scp -i $HOME/.ssh/id_rsa  ku.sh droot@$PIP2:/home/droot/ku.sh 
 scp -i $HOME/.ssh/id_rsa  $HOME/.ssh/id_rsa  droot@$PIP2:/home/droot/p.key
 
-# config vm002 aka master
+# config  master
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "sudo chmod +x ku.sh"
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "sudo ./ku.sh"
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "sudo hostnamectl --static set-hostname master.example.local"
 
-# config vm003 aka node1 
+# config node1 
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "scp -i p.key ku.sh droot@$PIP3:/home/droot/ku.sh"
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "ssh -i p.key droot@$PIP3 'sudo chmod +x ku.sh'" 
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "ssh -i p.key droot@$PIP3 'sudo ./ku.sh'" 
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "ssh -i p.key droot@$PIP3 'sudo hostnamectl --static set-hostname node1.example.local'" 
 
-# config vm004 aka node2
+# config node2
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "scp -i p.key ku.sh droot@$PIP4:/home/droot/ku.sh"
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "ssh -i p.key droot@$PIP4 'sudo chmod +x ku.sh'" 
 ssh -i $HOME/.ssh/id_rsa  droot@$PIP2  "ssh -i p.key droot@$PIP4 'sudo ./ku.sh'" 
@@ -132,7 +132,7 @@ open_pub2
 
 #Print END message 
 echo 
-echo -e "\e[93mvm002,vm003,vm004 fully deployed...you may use the same private key from Lesson Docker to connect to master node ip $PIP2"
+echo -e "\e[93mvm002,vm003,vm004 fully deployed...you may use the Azure private key to connect to master node ip $PIP2"
 echo 
 echo -e "\e[93mPublic IP address for your vm002 is $PIP2"
 echo 

@@ -9,7 +9,7 @@
             "value": "vm002821"
         },
         "networkSecurityGroupName": {
-            "value": "vm002-nsg"
+            "value": "master-nsg"
         },
         "networkSecurityGroupRules": {
             "value": [
@@ -35,7 +35,7 @@
             "value": "/subscriptions/f188e1ff-cb9a-4da8-817e-cee4074d645c/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
         },
         "publicIpAddressName": {
-            "value": "vm002-ip"
+            "value": "master-ip"
         },
         "publicIpAddressType": {
             "value": "Dynamic"
@@ -44,10 +44,10 @@
             "value": "Basic"
         },
         "virtualMachineName": {
-            "value": "vm002"
+            "value": "master"
         },
         "virtualMachineComputerName": {
-            "value": "vm002"
+            "value": "master"
         },
         "virtualMachineRG": {
             "value": "k8s_rg"
