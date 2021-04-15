@@ -35,7 +35,7 @@ function subid()
 {
 SUBID=$(az account list | grep id | awk '{print $2}'  | sed 's/"//g' | sed 's/,//g')
 virtualNetworkId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/virtualNetworks/ks8_rg-vnet"
-networkSecurityGroupId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/vm002-nsg"
+networkSecurityGroupId="/subscriptions/${SUBID}/resourceGroups/k8s_rg/providers/Microsoft.Network/networkSecurityGroups/master-nsg"
 }
 
 function deploy_vm001()
