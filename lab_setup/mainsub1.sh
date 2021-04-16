@@ -12,6 +12,7 @@ EOF
 function yumrepo1()
 {
 ssh droot@$PIP1  "sudo yum-config-manager --add-repo https://packages.microsoft.com/config/rhel/8/mssql-server-2019.repo"
+ssh droot@$PIP1  "sudo yum-config-manager --add-repo https://packages.microsoft.com/config/rhel/8/prod.repo"
 ssh droot@$PIP1  "sudo yum makecache"
 }
 
