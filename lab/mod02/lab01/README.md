@@ -57,12 +57,11 @@ vm001#> echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bash_profile
 vm001#> echo 'export PATH="$PATH:/opt/mssql-tools/bin"' >> ~/.bashrc
 
 vm001#> source ~/.bashrc
-
-
 ```
 
 # Step 5
 Connect locally
+
 Run sqlcmd with parameters for your SQL Server name (-S), the user name (-U), and the password (-P). In this tutorial, you are connecting locally, so the server name is localhost. The user name is SA and the password is the one you provided for the SA account during setup.
 
 ```sh
@@ -155,7 +154,7 @@ Insert Data to Sample_Table
 2> S_Id, P_Name, C_Name, Desc 
 3> ) 
 4> values ( 
-5> '00001', 'Windows', 'Microsoft', 'System well know for BSOD.' 
+5> '00005', 'Windows', 'Microsoft', 'System well know for BSOD.' 
 6> ) 
 7> go 
 
@@ -172,7 +171,7 @@ Verify Table Data
 # Step 10 
 Run T-SQL from command line
 ```sh
-vm001#>  sqlcmd -S localhost -U SA  -d 'sampledb'  -Q 'select * from sample_table' 
+vm001#>  sqlcmd -S localhost -U SA  -d 'sampledb' -P 'Pa$$w0rd2019' -Q 'select * from sample_table' 
 ```
 
 END
