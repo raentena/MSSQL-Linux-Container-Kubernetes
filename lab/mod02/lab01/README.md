@@ -110,7 +110,7 @@ Create Tables.
 2> S_Id nvarchar(10) not null, 
 3> P_Name nvarchar(50) not null, 
 4> C_Name nvarchar(50) null, 
-5> Desc nvarchar(150) not null 
+5> D_Desc nvarchar(150) not null 
 6> ) 
 7> go 
 ```
@@ -171,7 +171,7 @@ Verify Table Data
 # Step 10 
 Run T-SQL from command line
 ```sh
-vm001#>  sqlcmd -S localhost -U SA  -d 'sampledb' -P 'Pa$$w0rd2019' -Q 'select * from sample_table' 
+vm001#>  sqlcmd -S localhost -U SA  -d 'sampledb2' -P 'Pa$$w0rd2019' -Q 'select * from sample_table' 
 ```
 
 END
