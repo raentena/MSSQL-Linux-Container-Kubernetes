@@ -394,6 +394,7 @@ Connect locally
 
 Run sqlcmd with parameters for your SQL Server name (-S), the user name (-U), and the password (-P). In this tutorial, you are connecting locally, so the server name is localhost. The user name is SA and the password is the one you provided for the SA account during setup.
 
+# Step 1 
 ```sh
 vm001#> sqlcmd -S localhost -U SA -P 'Pa$$w0rd2019'
 
@@ -401,7 +402,7 @@ vm001#> sqlcmd -S localhost -U SA -P 'Pa$$w0rd2019'
 2>GO
 ```
 
-# Step 6
+# Step 2
 Create and query data
 ```sh
 # create [SampleDB] database
@@ -432,7 +433,7 @@ Create and query data
 
 ```
 
-# Step 7
+# Step 3
 Create Tables. 
 ```sh
 # create [Sample_Table] table
@@ -445,7 +446,7 @@ Create Tables.
 7> go 
 ```
 
-# Step 8 
+# Step 4 
 Insert Data to Sample_Table 
 ```sh
 1> insert into dbo.Sample_Table ( 
@@ -490,7 +491,7 @@ Insert Data to Sample_Table
 
 ```
 
-# Step 9 
+# Step 5 
 Verify Table Data
  
 ```sh
