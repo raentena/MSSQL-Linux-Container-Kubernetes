@@ -40,7 +40,6 @@ Run all of the following commands from your ssh session with the bash shell. Thi
     
     >>NOTE: You may skip this step, firewalld service already disabled on vm002
 
-Believe it or not, that's it! You have now installed SQL Server on Linux which includes the core database engine and SQL Server Agent.
 
 ## Explore the SQL Server installation
 
@@ -165,9 +164,9 @@ Let's learn a few common Linux commands while interacting with the bash shell
 
 9. **htop** is an interactive program to see process utilization information across processors and processes. However, it is not installed by default so run the following commands first to install htop.
 
-    `sudo wget dl.fedoraproject.org/pub/epel/7/x86_64/Packages/e/epel-release-7-11.noarch.rpm`
+    `sudo wget https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm`
 
-    `sudo rpm -ihv epel-release-7-11.noarch.rpm`
+    `sudo rpm -ihv epel-release-latest-8.noarch.rpm`
 
     `sudo yum install -y htop`
 
@@ -181,7 +180,7 @@ Let's learn a few common Linux commands while interacting with the bash shell
 
     Type "q" to exit the tool
 
-10. You will likely need a good editor while using Linux. While the editor vi is installed by default, I recommend you use the **nano** editor. It may be already installed but if not run the following command to install it
+10. You will likely need a good editor while using Linux. While the editor vim is installed by default, I recommend you use the **nano** editor. It may be already installed but if not run the following command to install it
 
     `sudo yum install -y nano`
 
@@ -213,11 +212,11 @@ Let's install the SQL command line tools including sqlcmd (Note: you can also in
 
 1. Change to superuser mode by running the following command
 
-    `sudo su`
+    `sudo su -`
 
-2. Run the following command to download the repository configuration file for tools
+2. Run the following command to verify the repository configuration file for tools
 
-    `curl https://packages.microsoft.com/config/rhel/7/prod.repo > /etc/yum.repos.d/msprod.repo`
+    `yum repolist`
 
 3. Exit superuser mode
 
@@ -252,7 +251,7 @@ Let's install the SQL command line tools including sqlcmd (Note: you can also in
 
 ## Install mssql-cli on Linux
 
-You will perform the same tasks to install the new open source, cross-platform tool **mssql-cli**, which is built on python. This tool is in preview as of July 2018. To perform the installation offline, check the documentation at <https://github.com/dbcli/mssql-cli/blob/master/doc/installation/linux.md#red-hat-enterprise-linux-rhel-7>
+You will perform the same tasks to install the new open source, cross-platform tool **mssql-cli**, which is built on python.
 
 1. Import a repository key by running the following command
 
@@ -298,9 +297,7 @@ Now you will learn the great compatibility story of SQL Server on Linux by resto
 
     Depending on your network speed this should take no more than a few minutes
 
-2. Copy and restore the WideWorldImporters database. Copy the **cpwwi.sh**, **restorewwi.sh**, and **restorewwi_linux.sql** files from the downloaded zip of the gitHub repo into your home directory on Linux. MobaXterm provides drag and drop capabilities to do this. Copy these files and drop them into the "explorer" pane in MobaXterm on the left hand side from your ssh session.
-
-    Note: You can skip this step if you have already cloned the git repo in the prelab. If you have done this, the scripts in this lab are in the **sqllinuxlab** subdirectory. You can copy them into your home directory or edit them to ensure you have the right path for the WideWorldImporters backup file.
+2. Copy and restore the WideWorldImporters database. Copy the **cpwwi.sh**, **restorewwi.sh**, and **restorewwi_linux.sql** files from the gitHub repo into your home directory on Linux.
 
 3. Run the following commands from the bash shell to make the scripts executable (supply the root password if prompted)
 
@@ -390,6 +387,117 @@ Let's say you wanted to enable trace flag 1222 for deadlock details to be report
     The results should show that trace flag 1222 is setup globally like the following
 
     ![dbcctracestatus.PNG](../Media/dbcctracestatus.PNG)
+
+
+## Additional Steps
+Connect locally
+
+Run sqlcmd with parameters for your SQL Server name (-S), the user name (-U), and the password (-P). In this tutorial, you are connecting locally, so the server name is localhost. The user name is SA and the password is the one you provided for the SA account during setup.
+
+```sh
+vm001#> sqlcmd -S localhost -U SA -P 'Pa$$w0rd2019'
+
+1>SELECT @@version
+2>GO
+```
+
+# Step 6
+Create and query data
+```sh
+# create [SampleDB] database
+1> create database SampleDB; 
+2> go 
+
+# create a database with parameters
+1> create database SampleDB2 
+2> on primary (
+3> name = 'SampleDB2',
+4> filename = '/var/opt/mssql/data/SampleDB2.mdf',
+5> size = 5GB,
+6> maxsize = unlimited,
+7> filegrowth = 10MB
+8> )
+9> log on (
+10> name = 'SampleDB2_log',
+11> filename = '/var/opt/mssql/data/SampleDB2_log.ldf',
+12> size = 1GB,
+13> maxsize = 2GB,
+14> filegrowth = 5%
+15> )
+16> go
+
+# list databases
+1> select name,create_date from sys.databases;
+2> go
+
+```
+
+# Step 7
+Create Tables. 
+```sh
+# create [Sample_Table] table
+1> create table dbo.Sample_Table ( 
+2> S_Id nvarchar(10) not null, 
+3> P_Name nvarchar(50) not null, 
+4> C_Name nvarchar(50) null, 
+5> Desc nvarchar(150) not null 
+6> ) 
+7> go 
+```
+
+# Step 8 
+Insert Data to Sample_Table 
+```sh
+1> insert into dbo.Sample_Table ( 
+2> S_Id, P_Name, C_Name, Desc 
+3> ) 
+4> values ( 
+5> '00001', 'CentOS', 'Linux', 'This is the Community Enterprise Operating System.' 
+6> ) 
+7> go 
+
+1> insert into dbo.Sample_Table ( 
+2> S_Id, P_Name, C_Name, Desc 
+3> ) 
+4> values ( 
+5> '00002', 'Redhat', 'Linux', 'Redhat Enterprise Linux.' 
+6> ) 
+7> go 
+
+1> insert into dbo.Sample_Table ( 
+2> S_Id, P_Name, C_Name, Desc 
+3> ) 
+4> values ( 
+5> '00003', 'Debian', 'Linux', 'Debian GNU Linux.' 
+6> ) 
+7> go 
+
+1> insert into dbo.Sample_Table ( 
+2> S_Id, P_Name, C_Name, Desc 
+3> ) 
+4> values ( 
+5> '00004', 'Ubuntu', 'Linux', 'Ubuntu is based on Debian GNU.' 
+6> ) 
+7> go 
+
+1> insert into dbo.Sample_Table ( 
+2> S_Id, P_Name, C_Name, Desc 
+3> ) 
+4> values ( 
+5> '00005', 'Windows', 'Microsoft', 'System well know for BSOD.' 
+6> ) 
+7> go 
+
+```
+
+# Step 9 
+Verify Table Data
+ 
+```sh
+1> select * from sample_table 
+2> go 
+```
+
 
 ## Existing familar tools like SQL Server Management Studio (SSMS) just work!
 
