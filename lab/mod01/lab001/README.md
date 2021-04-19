@@ -34,5 +34,5 @@ main.sh will call all the other scripts automatically
 - chmod +x main.sh 
 - ./main.sh vm001  ( wait until complete before proceeding to next step )
 - ./main.sh vm002  ( wait until complete before proceeding to next step )
-- ./main.sh aks 
+- ./main.sh k8s
 
