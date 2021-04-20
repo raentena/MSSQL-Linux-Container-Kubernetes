@@ -8,6 +8,7 @@ You will notice all the kernel parameters that needed to optimize Linux is set o
 To enable  Tuned profile, save tuned.conf file under a /usr/lib/tuned/mssql folder, and enable the profile using the following commands:
 
 `chmod +x /usr/lib/tuned/mssql/tuned.conf`
+
 `tuned-adm profile mssql`
 
 Verify it's enabled with the following command:
@@ -75,5 +76,5 @@ Verify noatime been applied
 ```sh 
  mount | grep  noatime
  ```
- 
+
  END
