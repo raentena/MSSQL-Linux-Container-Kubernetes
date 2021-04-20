@@ -25,13 +25,15 @@ Verify the remaining size of VolumeGroup before creating a SWAP device
 
 ```sh 
 vgdisplay 
+```
 
+Create new Logical Volume for SWAP and enable it as SWAP Drive
+
+```sh 
 
 lvcreate -n swaplv -L 8G rootvg
 
-
 mkswap /dev/rootvg/swaplv
-
 
 echo '/dev/rootvg/swaplv  swap swap defaults 0 0' >> /etc/fstab
 
