@@ -11,7 +11,7 @@ You should have already completed the prelab to setup RHEL (vm002) in an Azure V
 
 Run all of the following commands from your ssh session with the bash shell. This lab assumes your Linux Server is connected to the internet. You can do an offline installation of SQL Server on Linux. 
 
-1. Connect to your vm002 via ssh 
+1. Connect to your vm001 via ssh 
 
 
 2. Use the yum package manager to kick off the installation with the following command (-y means don't prompt)
