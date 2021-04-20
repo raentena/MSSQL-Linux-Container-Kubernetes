@@ -38,7 +38,7 @@ Run all of the following commands from your ssh session with the bash shell. Thi
 
     `sudo firewall-cmd --reload`
     
-    >>NOTE: You may skip this step, firewalld service already disabled on vm002
+    >>NOTE: You may skip this step, firewalld service already disabled on vm001
 
 
 ## Explore the SQL Server installation
