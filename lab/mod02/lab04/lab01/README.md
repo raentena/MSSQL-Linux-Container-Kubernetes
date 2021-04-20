@@ -3,9 +3,9 @@
 Install Kubernetes in your Linux Machines(s)
 
 You have 3 Machines  : 
-- vm002 as master.example.local
-- vm003 as node1.example.local
-- vm004 as node2.example.local 
+- master as master.example.local
+- node1 as node1.example.local
+- node2 as node2.example.local 
 
 The lab for Kubernetes will be using 1 master with 2 worker node ( NOT for Production use )
 
