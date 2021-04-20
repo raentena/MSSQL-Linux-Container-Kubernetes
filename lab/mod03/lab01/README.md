@@ -1,4 +1,10 @@
 # Using Tuned to configure Kernel settings
+Examine the content of tuned.conf 
+
+` cat tuned.conf ` 
+
+You will notice all the kernel parameters that needed to optimize Linux is set on the tuned.conf 
+
 To enable  Tuned profile, save tuned.conf file under a /usr/lib/tuned/mssql folder, and enable the profile using the following commands:
 
 `chmod +x /usr/lib/tuned/mssql/tuned.conf`
@@ -7,7 +13,6 @@ To enable  Tuned profile, save tuned.conf file under a /usr/lib/tuned/mssql fold
 Verify it's enabled with the following command:
 
 `tuned-adm active`
-
 
 # blockdev command
 Use blockdev to set the Block access Size
@@ -70,5 +75,5 @@ Verify noatime been applied
 ```sh 
  mount | grep  noatime
  ```
-
+ 
  END
