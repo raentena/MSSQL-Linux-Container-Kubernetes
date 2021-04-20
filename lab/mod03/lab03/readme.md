@@ -1,11 +1,12 @@
 # SQL Server Full-Text Search
+>> Perform all steps on vm001
 
 Install SQL Server Full-Text Search.
 
 ```sh 
-[vm001@dlp ~]# dnf -y install mssql-server-fts
+[vm001@vm001 ~]# yum install mssql-server-fts -y 
 
-[vm001@dlp ~]# systemctl restart mssql-server
+[vm001@vm001 ~]# systemctl restart mssql-server
 
 ```
 
@@ -51,7 +52,7 @@ go
 # test to run full-text search
 select * from dbo.Sample_Table where contains((P_Name,D_Desc),'Enterprise');
 go
-Number     P_Name     Last_Name    D_Desc
+Number     P_Name         Last_Name    D_Desc
 ---------- -------------- ------------ --------------------------------------------------
 00001      CentOS         Linux        This is the Community Enterprise Operating System.
 00002      RedHat         Linux        RedHat Enterprise Linux.
@@ -62,7 +63,7 @@ Number     P_Name     Last_Name    D_Desc
 select * from dbo.Sample_Table where freetext((D_Desc),'GNU or architecture');
 go
 
-Number     P_Name   Last_Name     D_Desc
+Number     P_Name       Last_Name     D_Desc
 ---------- ------------ ------------- --------------------------------------------------
 00003      Debian       Linux         Debian GNU Linux.
 00004      Ubuntu       Linux         Ubuntu is based on the Debian architecture.
