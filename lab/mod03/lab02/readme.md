@@ -1,5 +1,4 @@
 # Enable SQL Agent and configure a SQL Agent JOB
-
 >> All steps to be performed in vm001 
 
 Enable SQL Agent 
