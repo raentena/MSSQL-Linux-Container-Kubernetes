@@ -1,27 +1,57 @@
-In order to run this exercise and the ones in sqlcontainerupdate you must first download the WideWorldImporters backup into this folder. You can do this by using the **pullwwi.sh** script.
+# wwi-webapp Docker Setup
 
-1. Run **step1_dockerruncu10.sh** to start a container with SQL Server 2017 CU8. This container is called sql2017cu10
+# Step 1 
 
-2. Run **step2_dockercopy.sh** to copy the WWI backyup into the container.
+Make sure you have cloned this repo
 
-3. Run **step3_docker_restorewwi.sh** to restore the backup. This uses docker exec to **run sqlcmd inside the container**. Since this takes a few minutes it will run in the background using the -d paramater for docker exec.
+# Step 2 
 
-4. Run **step4_dockerrun2.sh** to start another SQL container with the latest SQL 2017 update. This container is called sql2. Notice a different volume is used along with port 1402 instead of 1401.
+`cd src/config/`
 
-5. Run **step5_containers.sh** to see both containers running. You now have two SQL Servers running on the same Linux machine using containers.
+# Step 3 
 
-6. Run **step6_procs.sh** to see the process for the Linux host which include the docker daemon. Note the sqlservr processes as children underneath that process.
+`vim dbconfig.json` 
 
-7. Run **step7_namespaces.sh** to see the different namespaces for the SQL Server containers
+>> Change the user, password, server and port ( whichever needed )
+>> server should be pointing to an actual SQL server that has WideWorldImporters DB ( can use IP Address )
 
-8. The restore should be finished from Step 3. Run **step8_dockerquery.sh** to run a query for the database by connecting **using sqlcmd outside of the container**.
+>> Once you done the changes, return to root directory  `cd ../../` 
 
-9. Use docker exec to interact with the sql2017cu10 container through a shell by executing **step9_dockerexec.sh**. Notice the shell has the hostname used to run the container at the prompt.
+# Step 4 
 
-- Run ps -axf to see the isolation of containers and that sqlservr is just about the only process running.
+Run the docker build script to build docker image locally 
 
-- Go look at the ERRORLOG file in /var/opt/mssql/log.
+`chmod +x docker_build.sh   && ./docker_build.sh <Docker_HUB_ID>` 
 
-- Exit the shell inside the container by typing **exit**.
+# Step 5
 
-10. Leave all containers running as they will be used in the next set of exercises in the **sqlcontainerupdate** folder.
+Verify the image is build 
+
+`docker images` 
+
+# Step 6 
+
+Run the docker image with a container 
+
+`docker run -d -p 80:3000 <docker_id>/webapp:latest --name wwiwebapp`
+
+Make sure its up and Running
+
+`docker ps` 
+
+
+# Step 7 
+
+Access the port 80 via a browser 
+
+
+# Step 8 
+
+We can upload the docker image to Docker HUB 
+
+>> The App is hard coded with Server Address and Password, in Production, developers should use variable to pass this information to container
+
+`docker login`
+
+`docker push <DOCKER_HUB-ID>/webapp:latest` 
+
