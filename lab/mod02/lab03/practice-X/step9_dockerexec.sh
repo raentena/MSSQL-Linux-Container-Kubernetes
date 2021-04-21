@@ -1,1 +1,1 @@
-sudo docker exec -it sql2017cu10 bash
+sudo docker exec -it mssql bash
