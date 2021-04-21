@@ -33,7 +33,7 @@ Verify the image is build
 
 Run the docker image with a container 
 
-`docker run -d -p 80:3000 <docker_id>/webapp:latest --name wwiwebapp`
+`docker run -d -p 80:3000 --name wwiwebapp <docker_id>/webapp:latest `
 
 Make sure its up and Running
 
