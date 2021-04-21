@@ -27,4 +27,4 @@ In order to run this exercise , you must first download the WideWorldImporters b
 
 - Exit the shell inside the container by typing **exit**.
 
-10. Leave all containers running as they will be used in the next set of exercises in the **practice-z folder.
+10. Leave all containers running as they will be used in the next set of exercises in the **practice-z** folder.
