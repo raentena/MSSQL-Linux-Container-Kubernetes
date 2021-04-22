@@ -1,0 +1,10 @@
+{
+    "user": "sa",
+    "password": "Pa$$w0rd2019",
+    "server": "mssql",
+    "database": "WideWorldImporters",
+    "port": 1433,
+    "options": {
+        "encrypt": false
+    }
+}
