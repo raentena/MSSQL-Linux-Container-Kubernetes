@@ -59,4 +59,4 @@
 # Exercise 3
 ### In this exercise, you will build MSSQL 2019 and a NODEJS WebApp container Image 
 ### The MSSQL 2019 will build with AUTO seed data and with extra mssql-conf configuration 
-    >> Its important you do this exercise, as we will use this Image for Kubernetes and HA 
+    >> Its important you do this exercise, as we will use this Image for Kubernetes and HA
