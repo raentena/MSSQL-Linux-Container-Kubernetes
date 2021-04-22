@@ -12,5 +12,3 @@ do
         sleep 1
     fi
 done
-
-/opt/mssql/bin/sqlservr
