@@ -107,7 +107,17 @@
 
 ### Build and Verify  NODE JS APP Image/Container 
 
-1. 
+1. Navigate to directory ./webapp 
+
+2. Review the Dockerfile 
+   
+    ` cat Dockerfile `
+
+3. Build a new NODE JS webapp container image 
+
+    ` docker build . -t <DOCKER_HUB_ID>/nodewebapp:v1 `
+
+
 
 
 
