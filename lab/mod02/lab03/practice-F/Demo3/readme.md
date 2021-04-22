@@ -117,10 +117,35 @@
 
     ` docker build . -t <DOCKER_HUB_ID>/nodewebapp:v1 `
 
+4. Verify the build is successful by running the image as a container
 
+    ` docker run -d -p 80:3000 --name webapp <DOCKER_HUB_ID>/nodewebapp:v1 ` 
 
+5. Now, open a web browser and navigate to vm001 public ip address 
+    
+    >> You may receive an error stating **mssql query execution error** , you can ignore this, the POC is to see the webapp container created is running fine and web application can handle request. 
 
+6. In vm002, terminate the webapp container and remove from docker runtime 
 
+    ```sh 
+    docker stop webapp
+
+    docker rm webapp
+
+    docker ps -a 
+    ```
+
+### Build container set using docker-compose 
+
+1. Navigate to Demo3 directory 
+
+2. Review the docker-compose.yml file 
+
+    ` cat docker-compose.yml` 
+
+3. Run docker-compose command to bring up both mssql and webapp container 
+
+    `
 
 
 
