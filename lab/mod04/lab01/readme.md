@@ -80,7 +80,7 @@ By default, SQL Server listens for connections in port 1433. As a test, we had s
     `sqlcmd -S localhost,1455 -U USERNAME -P ‘PASSWORD’`
 
 16. Enter the edit mode of the mssql.conf file to modify the file:
-    `sudo nano /var/opt/mssql.conf`
+    `sudo nano /var/opt/mssql/mssql.conf`
 
 17. Move the down arrow key to go down to the tcpport = 1455 line.
 
