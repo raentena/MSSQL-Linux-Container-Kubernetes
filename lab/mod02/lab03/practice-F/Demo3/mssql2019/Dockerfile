@@ -33,7 +33,8 @@ RUN chmod +x /seed/import-data.sh
 RUN /opt/mssql/bin/mssql-conf traceflag 9481 on && \
     /opt/mssql/bin/mssql-conf traceflag 1234 on && \
     /opt/mssql/bin/mssql-conf traceflag 1222 on && \
-    /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048
+    /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048 && \
+    /opt/mssql/bin/mssql-conf set sqlagent.enabled true
 
 
 # Switch back to mssql user and run the entrypoint script
