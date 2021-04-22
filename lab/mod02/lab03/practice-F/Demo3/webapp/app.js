@@ -20,6 +20,9 @@ const mssql = require('mssql');
 const dbconfig = require('./src/config/dbconfig.json');
 const pool = new mssql.ConnectionPool(dbconfig);
 mssql.globalConnectionPool = pool;
+
+const myhost = 'cibai';
+
 //open database connection
 pool.connect((err)=>{
   if (err){
