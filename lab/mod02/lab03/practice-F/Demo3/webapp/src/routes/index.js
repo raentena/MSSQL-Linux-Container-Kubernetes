@@ -16,9 +16,11 @@ const sqldevops = require('../modules/sqldevops.js');
 const dbconfig = require('../config/dbconfig.json');
 const tablespaceSqlFile = './src/sql/tablespace.sql';
 const nav = require('../config/navconfig.json');
-const myhostname = require('os');
+const os = require('os');
 
 const pool = mssql.globalConnectionPool;
+
+var myhostname = os.hostname();
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
