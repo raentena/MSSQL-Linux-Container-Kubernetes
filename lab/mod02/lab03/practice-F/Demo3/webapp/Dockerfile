@@ -1,4 +1,4 @@
-FROM node:boron-alpine
+FROM node:10.24
 
 # Create app directory
 WORKDIR /usr/src/app
