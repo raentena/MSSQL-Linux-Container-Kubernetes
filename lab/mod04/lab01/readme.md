@@ -98,9 +98,9 @@ You can change other parameters on the mssql.conf file using this method.
 
 23. Restart the SQL Server service for the setting to take effect:
 
-    `systemctl restart mssql-server`
+    `sudo systemctl restart mssql-server`
 
-24. Key in your password.
+24. Key in your password if prompted for sudo.
 
 25. Try connecting using the default port of SQL and it will connect successfully:
 
@@ -112,13 +112,13 @@ You can change other parameters on the mssql.conf file using this method.
 
 You can unset all other parameters exist in the mssql.conf file using this method.
 
-27. Key in your password.
+27. Key in your password if prompted for sudo.
 
 28. Restart SQL Server service for the setting to take effect:
 
-    `systemctl restart mssql-server`
+    `sudo systemctl restart mssql-server`
 
-29. Key in your password.
+29. Key in your password if prompted for sudo.
 
 30. View the contents of the mssql.conf file to confirm the memory limit is unset:
 
