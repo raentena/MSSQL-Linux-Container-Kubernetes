@@ -23,10 +23,18 @@ ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
 # copy all run script 
 COPY . /seed
 
+# Download Bak file
 RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
 # Grant permissions for the import-data script to be executable
 RUN chmod +x /seed/import-data.sh
+
+# Setup some mssql-conf settings 
+RUN /opt/mssql/bin/mssql-conf traceflag 9481 on && \
+    /opt/mssql/bin/mssql-conf traceflag 1234 on && \
+    /opt/mssql/bin/mssql-conf traceflag 1222 on && \
+    /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048
+
 
 # Switch back to mssql user and run the entrypoint script
 USER mssql

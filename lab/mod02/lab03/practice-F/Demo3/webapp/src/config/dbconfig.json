@@ -3,7 +3,7 @@
     "password": "Pa55w0rd2019",
     "server": "mssql",
     "database": "WideWorldImporters",
-    "port": 1433,
+    "port": 2019,
     "options": {
         "encrypt": false
     }
