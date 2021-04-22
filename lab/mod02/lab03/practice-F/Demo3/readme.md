@@ -145,7 +145,15 @@
 
 3. Run docker-compose command to bring up both mssql and webapp container 
 
-    `
+    ` docker-compose up -d` 
+
+4. Verify docker-compose have created the container sets
+
+    ` docker-compose ps`
+
+5. Use your web browser to navigate to vm002 public ip address and verify you can access the webapp and its connected to MSSQL. 
+
+END
 
 
 
