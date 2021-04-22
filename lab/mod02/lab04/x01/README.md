@@ -29,8 +29,8 @@ master#>ping node2.example.local
 Make sure /etc/hosts on all 3 nodes have hostname information 
 ```sh
 master#> cat /etc/hosts 
-node1#> cat /etc/hosts 
-node2#> cat /etc/hosts 
+ssh node1.example.local 'cat /etc/hosts' 
+ssh node2.example.local 'cat /etc/hosts'
 ```
 
 # Step 3 
@@ -38,8 +38,8 @@ node2#> cat /etc/hosts
 Make sure docker is installed on all 3 system 
 ```sh
 master#> docker -v 
-node1#> docker -v 
-node2#> docker -v 
+ssh node1.example.local 'docker -v' 
+ssh node2.example.local 'docker -v'
 ```
 
 # Step 4 
