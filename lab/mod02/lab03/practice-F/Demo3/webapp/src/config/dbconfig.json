@@ -1,7 +1,7 @@
 {
     "user": "sa",
-    "password": "Pa$$w0rd2019",
-    "server": "52.163.229.90",
+    "password": "Pa55w0rd2019",
+    "server": "mssql",
     "database": "WideWorldImporters",
     "port": 1433,
     "options": {
