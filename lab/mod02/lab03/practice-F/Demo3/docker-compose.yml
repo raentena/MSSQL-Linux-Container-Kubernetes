@@ -1,4 +1,4 @@
-version: 3.7
+version: '3.7'
 services:
     mssql:
         image: stv707/mssql2019:v1
