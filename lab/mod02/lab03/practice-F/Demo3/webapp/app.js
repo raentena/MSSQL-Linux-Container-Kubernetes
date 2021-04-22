@@ -13,6 +13,7 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const hhostname = require('./src/config/h.js');
 
 //database
 const mssql = require('mssql');
