@@ -30,4 +30,7 @@ RUN chmod +x /seed/import-data.sh
 
 # Switch back to mssql user and run the entrypoint script
 USER mssql
+
 ENTRYPOINT /bin/bash ./entrypoint.sh
+
+CMD ["/opt/mssql/bin/sqlservr "]
