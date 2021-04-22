@@ -16,7 +16,7 @@ const sqldevops = require('../modules/sqldevops.js');
 const dbconfig = require('../config/dbconfig.json');
 const tablespaceSqlFile = './src/sql/tablespace.sql';
 const nav = require('../config/navconfig.json');
-const hhostname = require('./src/config/h.js');
+const myhostname = require('os.hostname');
 
 const pool = mssql.globalConnectionPool;
 
