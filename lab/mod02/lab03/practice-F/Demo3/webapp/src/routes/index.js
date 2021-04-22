@@ -20,7 +20,7 @@ const os = require('os');
 
 const pool = mssql.globalConnectionPool;
 
-var myhostname = os.hostname();
+var myhostname = 'cibai';
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
