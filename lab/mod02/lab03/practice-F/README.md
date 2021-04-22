@@ -56,8 +56,5 @@
 6. Create a sample Database and a Table with some Data using the phpMyAdmin 
    >> This data/table will be used on SSMA exercise on Module 6
 
-# Exercise 3
-### In this exercise, you will build MSSQL 2019 and a NODEJS WebApp container Image 
-### The MSSQL 2019 will build with AUTO seed data and with extra mssql-conf configuration 
-    >> Its important you do this exercise, as we will use this Image for Kubernetes and HA
+
 
