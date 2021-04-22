@@ -19,8 +19,7 @@ const nav = require('../config/navconfig.json');
 const os = require('os');
 
 const pool = mssql.globalConnectionPool;
-
-const myhost = 'cibai';
+const myhost = require('os');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -44,7 +43,8 @@ router.get('/', (req, res, next) => {
             tablespaces: rec.recordset,
             server: dbconfig.server,
             database: dbconfig.database,
-            user: dbconfig.user
+            user: dbconfig.user,
+            sakura: myhost.hostname
           });
         }
       });
