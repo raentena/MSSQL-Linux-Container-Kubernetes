@@ -32,5 +32,3 @@ RUN chmod +x /seed/import-data.sh
 USER mssql
 
 ENTRYPOINT /bin/bash ./entrypoint.sh
-
-CMD ["/opt/mssql/bin/sqlservr "]
