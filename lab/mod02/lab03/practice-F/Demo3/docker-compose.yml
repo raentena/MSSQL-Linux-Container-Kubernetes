@@ -8,7 +8,7 @@ services:
             - "1433:1433"
         environment:
             MSSQL_PID: Developer
-        volume:
+        volumes:
             - sql:/var/opt/mssql
     
     webapp:
