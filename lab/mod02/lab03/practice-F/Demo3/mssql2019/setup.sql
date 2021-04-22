@@ -1,6 +1,6 @@
 CREATE DATABASE WideWorldImporters;
 GO
-USE WideWorldImporters;
+USE master ;
 GO
 
 restore database WideWorldImporters from disk = '/seed/WideWorldImporters-Full.bak' with
