@@ -23,8 +23,9 @@ go
 Changed database context to 'SampleDB2'.
 
 # this is the sample table for test
-1> select * from dbo.Sample_Table; 
-2> go
+select * from dbo.Sample_Table; 
+go
+
 S_Id       P_Name        C_Name         D_Desc
 ---------- ------------- -------------- --------------------------------------------------
 00001      CentOS        Linux          This is the Community Enterprise Operating System.
