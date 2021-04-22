@@ -1,8 +1,3 @@
-CREATE DATABASE WideWorldImporters;
-GO
-USE master ;
-GO
-
 restore database WideWorldImporters from disk = '/seed/WideWorldImporters-Full.bak' with
 move 'WWI_Primary' to '/var/opt/mssql/data/WideWorldImporters.mdf',
 move 'WWI_UserData' to '/var/opt/mssql/data/WideWorldImporters_UserData.ndf',
