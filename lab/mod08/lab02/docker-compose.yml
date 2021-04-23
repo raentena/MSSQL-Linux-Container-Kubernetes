@@ -1,0 +1,23 @@
+version: '3'
+services:
+    mssql:
+        image: stv707/mssql2019:v1
+        restart: always
+        container_name: mssql
+        environment:
+            MSSQL_PID: Developer
+        volumes:
+            - sql:/var/opt/mssql
+        ports:
+            - "1433:1433"
+    
+    webapp:
+        image: stv707/nodewebapp:v1
+        container_name: webapp
+        restart: always
+        depends_on:
+            - mssql
+        ports:
+            - "80:3000"
+volumes:
+    sql:
