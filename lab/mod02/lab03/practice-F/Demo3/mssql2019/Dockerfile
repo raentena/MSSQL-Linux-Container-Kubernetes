@@ -16,6 +16,7 @@ WORKDIR /seed
 # Set ENV for mssql-tool bin path 
 ENV ACCEPT_EULA Y
 ENV SA_PASSWORD Pa55w0rd2019
+ENV MSSQL_ID Developer 
 
 ENV MSSQLTOOLS_ROOT /opt/mssql-tools
 ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
@@ -39,5 +40,6 @@ RUN /opt/mssql/bin/mssql-conf traceflag 9481 on && \
 
 # Switch back to mssql user and run the entrypoint script
 USER mssql
+
 
 ENTRYPOINT /bin/bash ./entrypoint.sh
