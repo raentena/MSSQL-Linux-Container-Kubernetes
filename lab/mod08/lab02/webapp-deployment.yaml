@@ -24,7 +24,7 @@ spec:
         io.kompose.service: webapp
     spec:
       containers:
-        - image: stv707/nodewebapp:v1
+        - image: stv707/webapp:v2
           name: webapp
           ports:
             - containerPort: 3000
