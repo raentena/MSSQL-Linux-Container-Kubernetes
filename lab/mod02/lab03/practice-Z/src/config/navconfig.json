@@ -26,5 +26,9 @@
     {
         "url": "/users",
         "name": "Database Users"
+    },
+    {
+        "url": "/customer",
+        "name": "Customer (RUD)"
     }
 ]

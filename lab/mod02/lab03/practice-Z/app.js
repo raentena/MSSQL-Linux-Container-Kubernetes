@@ -48,6 +48,8 @@ const tablespacedetail = require('./src/routes/tablespacedetail');
 const servermemorybydb = require('./src/routes/servermemorybydb');
 const backuphistory = require('./src/routes/backuphistory');
 const dbsize = require('./src/routes/dbsize');
+const customer = require('./src/routes/customer');
+
 
 const app = express();
 
@@ -72,6 +74,11 @@ app.use('/tablespacedetail', tablespacedetail);
 app.use('/servermemorybydb', servermemorybydb);
 app.use('/backuphistory', backuphistory);
 app.use('/dbsize', dbsize);
+app.use('/customer', customer);
+app.use('/help', index);
+app.use('/settings', index);
+app.use('/profile', index);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

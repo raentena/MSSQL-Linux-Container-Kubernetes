@@ -36,7 +36,7 @@ router.get('/', (req, res, next) => {
           // for debugging
           //console.log(rec.recordset);
           res.render('index', {
-            title: 'Insights',
+            title: 'Linux MSSQL Insights',
             nav: nav,
             tablespaces: rec.recordset,
             server: dbconfig.server,
