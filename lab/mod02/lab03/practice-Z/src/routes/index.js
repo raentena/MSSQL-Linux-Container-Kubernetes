@@ -28,6 +28,16 @@ router.get('/', (req, res, next) => {
   fs.readFile(tablespaceSqlFile, 'utf8', (err, script) => {
     pool.connect((err) => {
       const request = new mssql.Request(pool);
+
+      request.query('select @@SERVERNAME as MyServerName',(err, result)=>{
+        const myServerName = result.recordset[0].MyServerName;
+        console.log('GOT SERVERNAME ' + myServerName)
+      
+        request.query('select @@VERSION as myversion',(err, result)=>{
+          const myversion = result.recordset[0].myversion;
+          console.log('GOT VERSION ' + myversion)
+      
+      
       request.query(script, (err, rec) => {
         if (err) {
           const sqlerror = sqldevops.getSqlError(err);
@@ -46,16 +56,16 @@ router.get('/', (req, res, next) => {
             server: dbconfig.server,
             database: dbconfig.database,
             user: dbconfig.user,
-            sakura: myhost.hostname
-            
-            
+            sakura: myhost.hostname, 
+            mazda: myServerName,
+            v8: myversion 
           });
         }
       });
     });
   });
 });
-
-
+});
+});
 
 module.exports = router;

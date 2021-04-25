@@ -14,15 +14,11 @@ const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 
-
 //database
 const mssql = require('mssql');
 const dbconfig = require('./src/config/dbconfig.json');
 const pool = new mssql.ConnectionPool(dbconfig);
 mssql.globalConnectionPool = pool;
-
-
-
 //open database connection
 pool.connect((err)=>{
   if (err){
@@ -34,8 +30,8 @@ pool.connect((err)=>{
                     + '/' + dbconfig.database 
                     + ' (' + dbconfig.user + ')');
     const request = new mssql.Request(pool);
-    request.query('select @@version',(err,rec)=>{
-      console.log(JSON.stringify(rec.recordset, null, 0)
+    request.query('select @@SERVERNAME',(err,rec)=>{
+      console.log('SQL RUNNING AT ' +JSON.stringify(rec.recordset, null, 0)
         .replace('[{"":"', '')
         .replace('"}]','')
       );
@@ -52,6 +48,8 @@ const tablespacedetail = require('./src/routes/tablespacedetail');
 const servermemorybydb = require('./src/routes/servermemorybydb');
 const backuphistory = require('./src/routes/backuphistory');
 const dbsize = require('./src/routes/dbsize');
+const customer = require('./src/routes/customer');
+
 
 const app = express();
 
@@ -76,6 +74,11 @@ app.use('/tablespacedetail', tablespacedetail);
 app.use('/servermemorybydb', servermemorybydb);
 app.use('/backuphistory', backuphistory);
 app.use('/dbsize', dbsize);
+app.use('/customer', customer);
+app.use('/help', index);
+app.use('/settings', index);
+app.use('/profile', index);
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -11,6 +11,7 @@
     "debug": "~2.6.3",
     "ejs": "^2.5.6",
     "express": "~4.15.2",
+    "hbs": "^4.1.2",
     "morgan": "^1.8.2",
     "mssql": "^4.0.4",
     "serve-favicon": "~2.4.2"
@@ -26,8 +27,8 @@
     "gulp": "^3.9.1",
     "gulp-eslint": "^4.0.0",
     "gulp-inject": "^4.2.0",
-    "nodemon": "^1.11.0",
     "gulp-nodemon": "^2.2.1",
+    "nodemon": "^1.11.0",
     "wiredep": "^4.0.0"
   }
 }

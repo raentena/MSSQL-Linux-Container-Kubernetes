@@ -16,10 +16,12 @@ const sqldevops = require('../modules/sqldevops.js');
 const dbconfig = require('../config/dbconfig.json');
 const tablespaceSqlFile = './src/sql/tablespace.sql';
 const nav = require('../config/navconfig.json');
-const os = require('os');
-
-const pool = mssql.globalConnectionPool;
 const myhost = require('os');
+const app = require('../../app.js');
+const { pathToFileURL } = require('url');
+const pool = mssql.globalConnectionPool;
+
+
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -38,17 +40,22 @@ router.get('/', (req, res, next) => {
           // for debugging
           //console.log(rec.recordset);
           res.render('index', {
-            title: 'Insights',
+            title: 'Linux MSSQL Insights',
             nav: nav,
             tablespaces: rec.recordset,
             server: dbconfig.server,
             database: dbconfig.database,
             user: dbconfig.user,
             sakura: myhost.hostname
+            
+            
           });
         }
       });
     });
   });
 });
+
+
+
 module.exports = router;
