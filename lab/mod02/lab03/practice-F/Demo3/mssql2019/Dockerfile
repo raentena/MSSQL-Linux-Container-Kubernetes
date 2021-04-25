@@ -1,9 +1,10 @@
+# Custom MSSQL 2019 Docker Build
 FROM mcr.microsoft.com/mssql/server
 
 # Switch to root user for access to apt-get install
 USER root
 
-# Install node/npm
+# Install curl and wget
 RUN apt-get -y update  && \
         apt-get install -y curl && \ 
         apt-get install -y wget
@@ -30,16 +31,7 @@ RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-
 # Grant permissions for the import-data script to be executable
 RUN chmod +x /seed/import-data.sh
 
-# Setup some mssql-conf settings 
-RUN /opt/mssql/bin/mssql-conf traceflag 9481 on && \
-    /opt/mssql/bin/mssql-conf traceflag 1234 on && \
-    /opt/mssql/bin/mssql-conf traceflag 1222 on && \
-    /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048 && \
-    /opt/mssql/bin/mssql-conf set sqlagent.enabled true
-
-
 # Switch back to mssql user and run the entrypoint script
 USER mssql
-
 
 ENTRYPOINT /bin/bash ./entrypoint.sh
