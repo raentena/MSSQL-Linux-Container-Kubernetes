@@ -16,8 +16,12 @@ const sqldevops = require('../modules/sqldevops.js');
 const dbconfig = require('../config/dbconfig.json');
 const tablespaceSqlFile = './src/sql/tablespace.sql';
 const nav = require('../config/navconfig.json');
-
+const myhost = require('os');
+const app = require('../../app.js');
+const { pathToFileURL } = require('url');
 const pool = mssql.globalConnectionPool;
+
+
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -41,11 +45,17 @@ router.get('/', (req, res, next) => {
             tablespaces: rec.recordset,
             server: dbconfig.server,
             database: dbconfig.database,
-            user: dbconfig.user
+            user: dbconfig.user,
+            sakura: myhost.hostname
+            
+            
           });
         }
       });
     });
   });
 });
+
+
+
 module.exports = router;

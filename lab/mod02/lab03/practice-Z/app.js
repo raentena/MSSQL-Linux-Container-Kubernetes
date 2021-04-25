@@ -30,8 +30,8 @@ pool.connect((err)=>{
                     + '/' + dbconfig.database 
                     + ' (' + dbconfig.user + ')');
     const request = new mssql.Request(pool);
-    request.query('select @@version',(err,rec)=>{
-      console.log(JSON.stringify(rec.recordset, null, 0)
+    request.query('select @@SERVERNAME',(err,rec)=>{
+      console.log('SQL RUNNING AT ' +JSON.stringify(rec.recordset, null, 0)
         .replace('[{"":"', '')
         .replace('"}]','')
       );
