@@ -398,38 +398,38 @@ Run sqlcmd with parameters for your SQL Server name (-S), the user name (-U), an
 ```sh
 vm001#> sqlcmd -S localhost -U SA -P 'Pa$$w0rd2019'
 
-1>SELECT @@version
-2>GO
+SELECT @@version
+GO
 ```
 
 # Step 2
 Create and query data
 ```sh
 # create [SampleDB] database
-1> create database SampleDB; 
-2> go 
+ create database SampleDB; 
+ go 
 
 # create a database with parameters
-1> create database SampleDB2 
-2> on primary (
-3> name = 'SampleDB2',
-4> filename = '/var/opt/mssql/data/SampleDB2.mdf',
-5> size = 5GB,
-6> maxsize = unlimited,
-7> filegrowth = 10MB
-8> )
-9> log on (
-10> name = 'SampleDB2_log',
-11> filename = '/var/opt/mssql/data/SampleDB2_log.ldf',
-12> size = 1GB,
-13> maxsize = 2GB,
-14> filegrowth = 5%
-15> )
-16> go
+create database SampleDB2 
+on primary (
+name = 'SampleDB2',
+filename = '/var/opt/mssql/data/SampleDB2.mdf',
+size = 5GB,
+maxsize = unlimited,
+filegrowth = 10MB
+ )
+log on (
+name = 'SampleDB2_log',
+filename = '/var/opt/mssql/data/SampleDB2_log.ldf',
+size = 1GB,
+maxsize = 2GB,
+filegrowth = 5%
+ )
+ go
 
 # list databases
-1> select name,create_date from sys.databases;
-2> go
+select name,create_date from sys.databases;
+ go
 
 ```
 
@@ -437,57 +437,57 @@ Create and query data
 Create Tables. 
 ```sh
 # create [Sample_Table] table
-1> create table dbo.Sample_Table ( 
-2> S_Id nvarchar(10) not null, 
-3> P_Name nvarchar(50) not null, 
-4> C_Name nvarchar(50) null, 
-5> Desc nvarchar(150) not null 
-6> ) 
-7> go 
+create table dbo.Sample_Table ( 
+S_Id nvarchar(10) not null, 
+P_Name nvarchar(50) not null, 
+C_Name nvarchar(50) null, 
+Desc nvarchar(150) not null 
+ ) 
+go 
 ```
 
 # Step 4 
 Insert Data to Sample_Table 
 ```sh
-1> insert into dbo.Sample_Table ( 
-2> S_Id, P_Name, C_Name, Desc 
-3> ) 
-4> values ( 
-5> '00001', 'CentOS', 'Linux', 'This is the Community Enterprise Operating System.' 
-6> ) 
-7> go 
+insert into dbo.Sample_Table ( 
+S_Id, P_Name, C_Name, Desc 
+) 
+values ( 
+'00001', 'CentOS', 'Linux', 'This is the Community Enterprise Operating System.' 
+ ) 
+ go 
 
-1> insert into dbo.Sample_Table ( 
-2> S_Id, P_Name, C_Name, Desc 
-3> ) 
-4> values ( 
-5> '00002', 'Redhat', 'Linux', 'Redhat Enterprise Linux.' 
-6> ) 
-7> go 
+insert into dbo.Sample_Table ( 
+S_Id, P_Name, C_Name, Desc 
+ ) 
+ values ( 
+'00002', 'Redhat', 'Linux', 'Redhat Enterprise Linux.' 
+ ) 
+ go 
 
-1> insert into dbo.Sample_Table ( 
-2> S_Id, P_Name, C_Name, Desc 
-3> ) 
-4> values ( 
-5> '00003', 'Debian', 'Linux', 'Debian GNU Linux.' 
-6> ) 
-7> go 
+ insert into dbo.Sample_Table ( 
+ S_Id, P_Name, C_Name, Desc 
+ ) 
+ values ( 
+ '00003', 'Debian', 'Linux', 'Debian GNU Linux.' 
+ ) 
+ go 
 
-1> insert into dbo.Sample_Table ( 
-2> S_Id, P_Name, C_Name, Desc 
-3> ) 
-4> values ( 
-5> '00004', 'Ubuntu', 'Linux', 'Ubuntu is based on Debian GNU.' 
-6> ) 
-7> go 
+ insert into dbo.Sample_Table ( 
+ S_Id, P_Name, C_Name, Desc 
+ ) 
+ values ( 
+ '00004', 'Ubuntu', 'Linux', 'Ubuntu is based on Debian GNU.' 
+ ) 
+ go 
 
-1> insert into dbo.Sample_Table ( 
-2> S_Id, P_Name, C_Name, Desc 
-3> ) 
-4> values ( 
-5> '00005', 'Windows', 'Microsoft', 'System well know for BSOD.' 
-6> ) 
-7> go 
+ insert into dbo.Sample_Table ( 
+ S_Id, P_Name, C_Name, Desc 
+ ) 
+ values ( 
+ '00005', 'Windows', 'Microsoft', 'System well know for BSOD.' 
+ ) 
+ go 
 
 ```
 
@@ -495,8 +495,8 @@ Insert Data to Sample_Table
 Verify Table Data
  
 ```sh
-1> select * from sample_table 
-2> go 
+ select * from sample_table 
+ go 
 ```
 
 
