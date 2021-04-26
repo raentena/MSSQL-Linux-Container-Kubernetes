@@ -414,15 +414,15 @@ create database SampleDB2
 on primary (
 name = 'SampleDB2',
 filename = '/var/opt/mssql/data/SampleDB2.mdf',
-size = 5GB,
+size = 100MB,
 maxsize = unlimited,
 filegrowth = 10MB
  )
 log on (
 name = 'SampleDB2_log',
 filename = '/var/opt/mssql/data/SampleDB2_log.ldf',
-size = 1GB,
-maxsize = 2GB,
+size = 10MB,
+maxsize = 100MB,
 filegrowth = 5%
  )
  go
