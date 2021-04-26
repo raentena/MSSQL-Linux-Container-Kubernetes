@@ -441,7 +441,7 @@ create table dbo.Sample_Table (
 S_Id nvarchar(10) not null, 
 P_Name nvarchar(50) not null, 
 C_Name nvarchar(50) null, 
-Desc nvarchar(150) not null 
+D_Desc nvarchar(150) not null 
  ) 
 go 
 ```
@@ -450,7 +450,7 @@ go
 Insert Data to Sample_Table 
 ```sh
 insert into dbo.Sample_Table ( 
-S_Id, P_Name, C_Name, Desc 
+S_Id, P_Name, C_Name, D_Desc 
 ) 
 values ( 
 '00001', 'CentOS', 'Linux', 'This is the Community Enterprise Operating System.' 
@@ -458,7 +458,7 @@ values (
  go 
 
 insert into dbo.Sample_Table ( 
-S_Id, P_Name, C_Name, Desc 
+S_Id, P_Name, C_Name, D_Desc 
  ) 
  values ( 
 '00002', 'Redhat', 'Linux', 'Redhat Enterprise Linux.' 
@@ -466,7 +466,7 @@ S_Id, P_Name, C_Name, Desc
  go 
 
  insert into dbo.Sample_Table ( 
- S_Id, P_Name, C_Name, Desc 
+ S_Id, P_Name, C_Name, D_Desc 
  ) 
  values ( 
  '00003', 'Debian', 'Linux', 'Debian GNU Linux.' 
@@ -474,7 +474,7 @@ S_Id, P_Name, C_Name, Desc
  go 
 
  insert into dbo.Sample_Table ( 
- S_Id, P_Name, C_Name, Desc 
+ S_Id, P_Name, C_Name, D_Desc 
  ) 
  values ( 
  '00004', 'Ubuntu', 'Linux', 'Ubuntu is based on Debian GNU.' 
@@ -482,7 +482,7 @@ S_Id, P_Name, C_Name, Desc
  go 
 
  insert into dbo.Sample_Table ( 
- S_Id, P_Name, C_Name, Desc 
+ S_Id, P_Name, C_Name, D_Desc 
  ) 
  values ( 
  '00005', 'Windows', 'Microsoft', 'System well know for BSOD.' 
