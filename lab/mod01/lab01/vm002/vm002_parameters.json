@@ -71,7 +71,7 @@
             "value": "StandardSSD_LRS"
         },
         "virtualMachineSize": {
-            "value": "Standard_B1ms"
+            "value": "Standard_B2s"
         },
         "adminUsername": {
             "value": "droot"

@@ -77,9 +77,9 @@ open_pub1
 
 #Display INFO for Student
 echo 
-echo -e "vm001 fully deployed...you may download the private key from azure and use puttygen to convert to use it with putty in your Beloved WINDOZE"
+echo -e "\e[93mvm001 fully deployed...you may download the private key from azure and WINDOZE Terminal"
 echo 
-echo -e "\e[93mDownload this file ($HOME/.ssh/id_rsa) to your WinDOZE computer and refer to \e[92mhttps://www.puttygen.com/convert-pem-to-ppk \e[93mto convert and use putty to connect to $PIP1"
+echo -e "\e[93mDownload this file ($HOME/.ssh/id_rsa) to your WinDOZE computer"
 echo 
 echo -e "\e[93mPublic IP address for your vm001 is $PIP1"
 echo 
