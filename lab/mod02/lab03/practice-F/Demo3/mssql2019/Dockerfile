@@ -12,11 +12,11 @@ ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
 USER root
 
 # Install curl and download repo for mssql-cli program 
-RUN  curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
+RUN  apt-get -y update  && apt-get install -y curl && \
+     curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
      apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod && \
-     apt-get -y update  && apt-get install -y curl mssql-cli && \ 
+     apt-get -y update  && apt-get install -y mssql-cli && \ 
      apt-get install -f
-
 
 # Create app directory
 RUN mkdir -p /seed
