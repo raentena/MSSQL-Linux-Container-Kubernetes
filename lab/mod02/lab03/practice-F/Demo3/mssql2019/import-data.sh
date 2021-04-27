@@ -35,4 +35,6 @@ memorylimitmb = 2048
 EIF
 }
 
+
+
 genmssqlconf > /var/opt/mssql/mssql.conf

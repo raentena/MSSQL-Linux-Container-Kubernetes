@@ -19,6 +19,8 @@ ENV ACCEPT_EULA Y
 ENV SA_PASSWORD Pa55w0rd2019
 ENV MSSQL_ID Evaluation
 ENV MSSQL_AGENT_ENABLED true
+ENV MSSQL_MEMORY_LIMIT_MB 2048
+
 
 ENV MSSQLTOOLS_ROOT /opt/mssql-tools
 ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
@@ -30,7 +32,9 @@ COPY . /seed
 RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
 # Grant permissions for the import-data script to be executable
-RUN chmod +x /seed/import-data.sh
+RUN  mkdir -p /var/opt/mssql && \
+         chown 10001:0 /var/opt/mssql && \
+         chmod +x /seed/import-data.sh
 
 # Switch back to mssql user and run the entrypoint script
 USER mssql
