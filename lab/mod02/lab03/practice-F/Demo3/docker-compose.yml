@@ -23,8 +23,8 @@ services:
             - "80:3000"
 volumes:
     sql:
-    driver: local
-    driver_opts: 
-        o: bind
-        type: none
-        device: /sql2019
+        driver: local
+        driver_opts: 
+            o: bind
+            type: none
+            device: /sql2019
