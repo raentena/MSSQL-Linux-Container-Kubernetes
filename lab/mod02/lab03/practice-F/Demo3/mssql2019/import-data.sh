@@ -15,26 +15,3 @@ do
     fi
 done
 fi
-
-## Create a mssql-conf file for sqlsvr startup, for docker build bug 
-function genmssqlconf {
-cat <<EIF
-[sqlagent]
-enabled = true
-
-[EULA]
-accepteula = Y
-
-[traceflag]
-traceflag0 = 1222
-traceflag1 = 9481
-traceflag2 = 1234
-
-[memory]
-memorylimitmb = 2048
-EIF
-}
-
-
-
-genmssqlconf > /var/opt/mssql/mssql.conf
