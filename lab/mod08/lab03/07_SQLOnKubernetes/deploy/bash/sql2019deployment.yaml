@@ -19,10 +19,10 @@ spec:
         fsGroup: 1000
       containers:
       - name: mssql
-        image: mcr.microsoft.com/mssql/rhel/server:2019-latest
+        image: stv707/sql2019:cu5
         env:
         - name: MSSQL_PID
-          value: "Developer"
+          value: "Evaluation"
         - name: ACCEPT_EULA
           value: "Y"
         - name: MSSQL_SA_PASSWORD
