@@ -11,12 +11,8 @@ ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
 # Switch to root user for access to apt-get install
 USER root
 
-# Install curl and download repo for mssql-cli program 
-RUN  apt-get -y update  && apt-get install -y software-properties-common curl gnupg && \
-     curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add - && \
-     apt-add-repository https://packages.microsoft.com/ubuntu/20.04/prod && \
-     apt-get -y update  && apt-get install -y mssql-cli && \ 
-     apt-get install -f
+# Install curl program 
+RUN  apt-get -y update  && apt-get install -y curl 
 
 # Create app directory
 RUN mkdir -p /seed
