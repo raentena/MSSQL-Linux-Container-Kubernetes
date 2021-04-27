@@ -14,4 +14,4 @@ reconfigure
 GO
 
 -- Enable additional DBCC trace Flag ( after SQL server is UP)
-DBCC TRACEON( 6530, 6531, 6532, -1 );
+DBCC TRACEON( 6532, -1 );
