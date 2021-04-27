@@ -17,7 +17,8 @@ WORKDIR /seed
 # Set ENV for mssql-tool bin path 
 ENV ACCEPT_EULA Y
 ENV SA_PASSWORD Pa55w0rd2019
-ENV MSSQL_ID Developer 
+ENV MSSQL_ID Evaluation
+ENV MSSQL_AGENT_ENABLED true
 
 ENV MSSQLTOOLS_ROOT /opt/mssql-tools
 ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
