@@ -24,8 +24,8 @@ COPY . .
 # Download Bak file
 RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
-# Grant permissions for the import-data script to be executable
-RUN  chmod +x /seed/import-data.sh
+# Grant permissions for the post config script to be executable
+RUN  chmod +x /seed/post_config.sh
 
 # Change to directory /var/opt/mssql/ and copy mssql.conf to startup
 WORKDIR /var/opt/mssql
