@@ -25,5 +25,5 @@ volumes:
         sql:
             driver_opts: 
                 type: none
-                devices: /sql
+                device: /sql
                 o: bind
