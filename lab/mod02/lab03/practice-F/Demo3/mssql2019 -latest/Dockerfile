@@ -1,5 +1,5 @@
 # Custom MSSQL 2019 Docker Build
-FROM mcr.microsoft.com/mssql/server
+FROM mcr.microsoft.com/mssql/server:latest
 
 # Set Default ENV for mssql-tool bin path, password and SQL edition 
 ENV ACCEPT_EULA Y
@@ -21,8 +21,6 @@ WORKDIR /seed
 # copy all run script 
 COPY . .
 
-# Download Bak file
-RUN wget https://github.com/Microsoft/sql-server-samples/releases/download/wide-world-importers-v1.0/WideWorldImporters-Full.bak
 
 # Grant permissions for the post config script to be executable
 RUN  chmod +x /seed/post_config.sh
