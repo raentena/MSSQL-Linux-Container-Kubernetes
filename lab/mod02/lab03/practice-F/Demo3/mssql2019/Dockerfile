@@ -1,7 +1,7 @@
 # Custom MSSQL 2019 Docker Build
 FROM mcr.microsoft.com/mssql/server
 
-# Set ENV for mssql-tool bin path and default password 
+# Set Default ENV for mssql-tool bin path, password and SQL edition 
 ENV ACCEPT_EULA Y
 ENV SA_PASSWORD Pa55w0rd2019
 ENV MSSQL_ID Evaluation
@@ -11,8 +11,12 @@ ENV PATH "$MSSQLTOOLS_ROOT/bin:$PATH"
 # Switch to root user for access to apt-get install
 USER root
 
-# Install curl and wget ( no need as Ubuntu already have wget and curl (just for reference))
-# RUN apt-get -y update  && apt-get install -y curl && apt-get install -y wget
+# Install curl and download repo for mssql-cli program 
+RUN  curl https://packages.microsoft.com/keys/microsoft.asc | sudo apt-key add - && \
+     apt-add-repository https://packages.microsoft.com/ubuntu/18.04/prod && \
+     apt-get -y update  && apt-get install -y curl mssql-cli && \ 
+     apt-get install -f
+
 
 # Create app directory
 RUN mkdir -p /seed
