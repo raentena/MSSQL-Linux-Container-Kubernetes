@@ -93,7 +93,7 @@ echo "Phase 1...."
 az aks create --resource-group ${VMNAME}_rg --name sqlk8s --node-count 3 --generate-ssh-keys --node-vm-size=Standard_B2ms &> /dev/null
 echo "Pahse 2...."
 sleep 2
-az aks get-credentials --resource-group SQL-RG --name sqlk8s 
+az aks get-credentials --resource-group ${VMNAME}_rg --name sqlk8s 
 echo "Deployment of aks ... PASS"
 sleep 20
 }

@@ -1,7 +1,7 @@
 version: '3'
 services:
     mssql:
-        image: stv707/CHANGE
+        image: stv707/sql2019:v5
         restart: always
         container_name: mssql
         environment:
@@ -12,7 +12,7 @@ services:
             - "1433:1433"
     
     webapp:
-        image: stv707/CHANGE
+        image: stv707/webapp:v5
         container_name: webapp
         environment:
             DBSVR: mssql
@@ -23,3 +23,7 @@ services:
             - "80:3000"
 volumes:
         sql:
+            driver_opts: 
+                type: none
+                devices: /sql
+                o: bind
