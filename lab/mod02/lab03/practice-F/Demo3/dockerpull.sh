@@ -17,6 +17,6 @@ EOF
 for i in $(list)
 do 
 
- echo "docker pull $i"
+docker pull $i
 
 done
