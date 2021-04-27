@@ -26,8 +26,8 @@ spec:
       containers:
         - image: stv707/webapp:final
           env:
-          - DBSVR
-          value: "mssql-service"
+          - name: DBSVR
+            value: "mssql-service"
           name: webapp
           ports:
             - containerPort: 3000
