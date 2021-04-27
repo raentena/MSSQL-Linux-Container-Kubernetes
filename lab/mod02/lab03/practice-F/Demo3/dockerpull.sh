@@ -1,6 +1,6 @@
 #!/bin/bash 
 
-functioni list () 
+function list () 
 {
 cat <<EOF 
 node:10.24                   
