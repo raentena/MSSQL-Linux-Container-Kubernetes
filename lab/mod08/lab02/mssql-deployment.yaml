@@ -38,7 +38,7 @@ spec:
                 secretKeyRef:
                   name: mssql-secret
                   key: SA_PASSWORD 
-          image: raentena/sql2019:CU5
+          image: raentena/sql2019:latest
           name: mssql
           ports:
             - containerPort: 1433
