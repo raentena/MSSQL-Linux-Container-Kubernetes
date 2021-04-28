@@ -1,7 +1,7 @@
 version: '3'
 services:
     mssql:
-        image: raentena/sql2019:CU5
+        image: raentena/sql2019:latest
         restart: always
         container_name: mssql
         environment:
