@@ -28,7 +28,7 @@ spec:
           name: webapp
           env:
           - name: DBSVR
-            value: "mssql-service"
+            value: "mssql"
           ports:
             - containerPort: 3000
           resources: {}
