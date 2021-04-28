@@ -9,7 +9,7 @@ metadata:
     io.kompose.service: webapp
   name: webapp
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       io.kompose.service: webapp
@@ -24,7 +24,7 @@ spec:
         io.kompose.service: webapp
     spec:
       containers:
-        - image: stv707/webapp:v2
+        - image: raentena/webapp:final
           name: webapp
           ports:
             - containerPort: 3000
