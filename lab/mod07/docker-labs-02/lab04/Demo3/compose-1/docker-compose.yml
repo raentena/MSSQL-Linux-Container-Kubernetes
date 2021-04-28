@@ -1,7 +1,7 @@
 version: '3'
 services:
     mssql:
-        image: stv707/sql2019:cu5
+        image: raentena/sql2019:CU5
         restart: always
         container_name: mssql
         environment:
@@ -12,7 +12,7 @@ services:
             - "1433:1433"
     
     webapp:
-        image: stv707/webapp:final
+        image: raentena/webapp:final
         container_name: webapp
         environment:
             DBSVR: mssql
