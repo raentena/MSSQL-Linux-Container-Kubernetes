@@ -1,80 +1,168 @@
-# Using Tuned to configure Kernel settings
-Examine the content of tuned.conf 
+# Configure MSSQL using mssql-conf script 
 
-` cat tuned.conf ` 
+1. View the contents of the mssql.conf file:
 
-You will notice all the kernel parameters that needed to optimize Linux is set on the tuned.conf 
+    `sudo cat /var/opt/mssql/mssql.conf`
 
-To enable  Tuned profile, save tuned.conf file under a /usr/lib/tuned/mssql folder, and enable the profile using the following commands:
+You will notice that it is almost empty except for showing settings for [sqlagent] and [EULA]. Any settings not shown in this file are using their default value.
 
-`cp tuned.conf /usr/lib/tuned/mssql/tuned.conf`
+2. Make a backup copy of the mssql.conf file before making changes:
 
-`tuned-adm profile mssql`
+    `sudo cp /var/opt/mssql/mssql.conf /var/opt/mssql/mssql-backup.conf`
 
-Verify it's enabled with the following command:
+3. View the contents of the /var/opt/mssql/ folder to confirm you now have a backup copy of the mssql.conf file:
 
-`tuned-adm active`
+    `sudo ls /var/opt/mssql`
 
-# blockdev command
-Use blockdev to set the Block access Size
+4. Create the directories for the new data, log, error, and backup:
 
-` blockdev --report`
+    ```sh 
+    sudo mkdir -p /sql/data
+    sudo mkdir -p /sql/log
+    sudo mkdir -p /sql/error
+    sudo mkdir -p /sql/backup
+    ```
 
-` blockdev --getra /dev/sda2 ` 
+The names of the directories are self-explanatory. /sql/data to store data, /sql/log to store log, /sql/error to store the error log file, and /sql/backup to store the database backups.
 
-` blockdev --setra 4096 /dev/sda2 `
+5. Change to your root directory:
 
-` blockdev --report`
+    `cd /`
 
-# Create and Use SWAP space
-Verify the remaining size of VolumeGroup before creating a SWAP device
+6. Change to the sql directory:
 
-```sh 
-vgdisplay 
-```
+    `cd sql/`
 
-Create new Logical Volume for SWAP and enable it as SWAP Drive
+7. List the contents of the sql directory:
 
-```sh 
+    `ls`
 
-lvcreate -n swaplv -L 8G rootvg
+8. Change the owner and group of the /sql directory to the mssql user:
 
-mkswap /dev/rootvg/swaplv
+    ```sh 
+    sudo chown mssql /sql
+    sudo chgrp mssql /sql
+    ```
+This will enable mssql user to have the required permissions to write files to the /sql subfolders.
 
-echo '/dev/rootvg/swaplv  swap swap defaults 0 0' >> /etc/fstab
+9. Change the default data and log directory:
+    `sudo /opt/mssql/bin/mssql-conf set filelocation.defaultdatadir /sql/data`
 
-swapon -s
+    `sudo /opt/mssql/bin/mssql-conf set filelocation.defaultlogdir /sql/log`
 
-swapon -a
+You will notice the message telling you “SQL Server needs to be restarted in order to apply this setting. Please run ‘systemctl restart mssql-server.service’.” We are making multiple changes here and will restart after the last change.
 
-swapon -s
+10. Change the default backup directory:
 
-```
+    `sudo /opt/mssql/bin/mssql-conf set filelocation.defaultbackupdir /sql/backup`
 
-# Enable noatime for root device 
-Check for current settings
+11. Set the memory limit to 2048 MB:
 
-```sh 
-grep  rootvg-rootlv /etc/fstab 
+    `sudo /opt/mssql/bin/mssql-conf set memory.memorylimitmb 2048`
 
-vim  /etc/fstab 
+12. Change the default TCP port for SQL to 1455:
+    `sudo /opt/mssql/bin/mssql-conf set network.tcpport 1455`
 
-```
+By default, SQL Server listens for connections in port 1433. As a test, we had set it to 1455. When connecting to SQL Server, you will need to specify the custom port as in the following:
 
-In the vim session add, 'noatime' options beside defaults under  rootvg-rootlv device 
+    `sqlcmd -S localhost, -U UserName -P Password`
 
-Save and Exit vim session 
+13. Restart SQL Server services for the settings to take effect:
 
-Remount to enable noatime 
+    `sudo systemctl restart mssql-server`
 
-```sh 
-systemctl restart systemd-remount-fs.service 
-```
+14. Try connecting to SQL Server without the custom port 1455 you had set back in step 13, you will see the corresponding error message:
 
-Verify noatime been applied
+    `sqlcmd -S localhost -U USERNAME -P ‘PASSWORD’`
 
-```sh 
- mount | grep  noatime
- ```
+15. Connect using the custom port will succeed:
 
- END
+    `sqlcmd -S localhost,1455 -U USERNAME -P ‘PASSWORD’`
+
+16. Enter the edit mode of the mssql.conf file to modify the file:
+    `sudo nano /var/opt/mssql/mssql.conf`
+
+17. Move the down arrow key to go down to the tcpport = 1455 line.
+
+18. Move the left arrow key to go the space after 1455.
+
+19. Erase 55 and replace with 33.
+
+You can change other parameters on the mssql.conf file using this method.
+
+20. Press Ctrl + O to write the file.
+
+21. Press Enter to accept the file name as mssql.conf.
+
+22. Press Ctrl + X to exit.
+
+23. Restart the SQL Server service for the setting to take effect:
+
+    `sudo systemctl restart mssql-server`
+
+24. Key in your password if prompted for sudo.
+
+25. Try connecting using the default port of SQL and it will connect successfully:
+
+    `sqlcmd -S localhost -U USERNAME -P ‘PASSWORD’`
+
+26. Unset the memory limit using the unset option:
+
+    `sudo /opt/mssql/bin/mssql-conf unset memory.memorylimitmb`
+
+You can unset all other parameters exist in the mssql.conf file using this method.
+
+27. Key in your password if prompted for sudo.
+
+28. Restart SQL Server service for the setting to take effect:
+
+    `sudo systemctl restart mssql-server`
+
+29. Key in your password if prompted for sudo.
+
+30. View the contents of the mssql.conf file to confirm the memory limit is unset:
+
+    `sudo cat /var/opt/mssql/mssql.conf`
+
+31. Review the content of the mssql-backup.conf file:
+
+    `sudo cat /var/opt/mssql/mssql-backup.conf`
+
+32. Revert the changes by renaming the mssql-backup.conf file to overwrite the existing mssql.conf file:
+
+    `sudo mv /var/opt/mssql/mssql-backup.conf /var/opt/mssql/mssql.conf`
+
+33. Review the content of the mssql.conf file:
+
+    `sudo cat /var/opt/mssql/mssql.conf`
+
+34. Restart SQL Server services for it to take effect:
+
+    `systemctl restart mssql-server`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,3 +1,0 @@
-# Lab Template
-
-- NIL - 
