@@ -1,0 +1,29 @@
+version: '3'
+services:
+    mssql:
+        image: stv707/sql2019:latest
+        restart: always
+        container_name: mssql
+        environment:
+            MSSQL_PID: Evaluation
+        volumes:
+            - sql:/var/opt/mssql 
+        ports:
+            - "1433:1433"
+    
+    webapp:
+        image: stv707/webapp:final
+        container_name: webapp
+        environment:
+            DBSVR: mssql
+        restart: always
+        depends_on:
+            - mssql
+        ports:
+            - "80:3000"
+volumes:
+        sql:
+            driver_opts: 
+                type: none
+                device: /sql
+                o: bind
