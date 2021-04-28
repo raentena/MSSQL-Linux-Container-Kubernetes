@@ -26,6 +26,9 @@ spec:
       containers:
         - image: raentena/webapp:final
           name: webapp
+          env:
+          - name: DBSVR
+            value: "mssql-service"
           ports:
             - containerPort: 3000
           resources: {}
