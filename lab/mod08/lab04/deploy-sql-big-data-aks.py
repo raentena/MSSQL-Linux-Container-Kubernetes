@@ -25,7 +25,7 @@ def executeCmd (cmd):
 # MUST INPUT THESE VALUES!!!!!
 #
 SUBSCRIPTION_ID = input("Provide your Azure subscription ID:").strip()
-GROUP_NAME = input("Provide Azure resource group name to be created - Press ENTER for using  `sql_rg`:").strip() or "sql_rg"
+GROUP_NAME = input("Provide Azure resource group name to be created - Press ENTER for using  `sql001rg`:").strip() or "sql001rg"
 # Use this only if you are using a private registry different than default Micrososft registry (mcr). 
 #DOCKER_USERNAME = input("Provide your Docker username:").strip()
 #DOCKER_PASSWORD  = getpass.getpass("Provide your Docker password:").strip()
@@ -66,6 +66,8 @@ executeCmd (command)
 print ("Creating azure resource group: "+GROUP_NAME)
 command="az group create --name "+GROUP_NAME+" --location "+AZURE_REGION
 executeCmd (command)
+
+sleep(10)
 
 SP_NAME = AZURE_REGION + '_' + GROUP_NAME + '_' + CLUSTER_NAME
 print ("Creating Service Principal: "+SP_NAME)
