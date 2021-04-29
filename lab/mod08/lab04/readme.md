@@ -9,10 +9,49 @@ You still need to install pre-requisites on **vm001**
 
 ## Pre-requisites (vm001 [ RHEL 7/8 ] )
 
-1. Install latest version of [az cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-1. Running the script will require: [python minimum version 3.0](https://www.python.org/downloads)
-1. Install the latest version of [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+1. run the following command to install all the pre-requisites 
+    ```sh 
+    chmod +x setup_linux.sh
 
+    ./setup_linux.sh 
+    ```
+
+1. you will see output like this, means all OK , else , refer Steven
+    ```sh 
+    Installation of az cli , kubectl and azdata seems OK
+    Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.0", GitCommit:"cb303e613a121a29364f75cc67d3d580833a7479", GitTreeState:"clean", BuildDate:"2021-04-08T16:31:21Z", GoVersion:"go1.16.1", Compiler:"gc", Platform:"linux/amd64"}
+    azure-cli                         2.22.1
+
+    core                              2.22.1
+    telemetry                          1.0.6
+
+    Python location '/usr/bin/python3'
+    Extensions directory '/root/.azure/cliextensions'
+
+    Python (Linux) 3.6.8 (default, Oct 11 2019, 15:04:54)
+    [GCC 8.3.1 20190507 (Red Hat 8.3.1-4)]
+
+    Legal docs and information: aka.ms/AzureCliLegal
+
+
+    Your CLI is up-to-date.
+
+    Please let us know how we are doing: https://aka.ms/azureclihats
+    and let us know if you're interested in trying out our newest features: https://aka.ms/CLIUXstudy
+    20.3.2
+
+    Build (20210330.1)
+
+    SQL Server 2019 (15.0.4123)
+
+    Legal docs and information: https://aka.ms/eula-azdata-en
+
+    Python (Linux) 3.6.8 (default, Oct 11 2019, 15:04:54)
+    [GCC 8.3.1 20190507 (Red Hat 8.3.1-4)]
+
+    Python location '/usr/bin/python3'
+
+    ```
 
 1. Login into your Azure account. Run this command and follow the instruction: 
 ```
