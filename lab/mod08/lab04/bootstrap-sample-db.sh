@@ -11,16 +11,16 @@ Port can be specified separately if using non-default values."
 ERROR_MESSAGE="Bootstrap of the sample database failed. Output and error files are in directory [/tmp/$TMP_DIR_NAME]."
 
 # Print usage if mandatory parameters are missing
-: "${1:?$USAGE_MESSAGE}"
-: "${2:?$USAGE_MESSAGE}"
-: "${3:?$USAGE_MESSAGE}"
-: "${DEBUG=}"
+#: "${1:?$USAGE_MESSAGE}"
+#: "${2:?$USAGE_MESSAGE}"
+#: "${3:?$USAGE_MESSAGE}"
+#: "${DEBUG=}"
 
 # Save the input parameters
 CLUSTER_NAMESPACE=$1
-SQL_MASTER_ENDPOINT=$2
-KNOX_ENDPOINT=$3
-AW_WWI_SAMPLES=$4
+SQL_MASTER_ENDPOINT=$(kubectl get svc -n sqlha | grep ^master-svc-external | awk '{print $4}')
+KNOX_ENDPOINT=$(kubectl get svc -n sqlha | grep ^gateway-svc-external | awk '{print $4}')
+AW_WWI_SAMPLES="--install-extra-samples"
 SQL_MASTER_PORT=$5
 KNOX_PORT=$6
 
