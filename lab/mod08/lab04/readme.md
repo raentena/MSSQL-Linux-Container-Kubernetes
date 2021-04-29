@@ -63,11 +63,11 @@ You still need to install pre-requisites on **vm001**
 ## Instructions
 #### Deploy SQL Big Data HA Cluster 
 
-Run the script using:
+1. Run the script using:
     
     ```sh
     python3 deploy-sql-big-data-aks.py
-    ```
+    `
 
 
 When prompted, provide your input for Azure subscription ID, Azure resource group to create the resources in.  
