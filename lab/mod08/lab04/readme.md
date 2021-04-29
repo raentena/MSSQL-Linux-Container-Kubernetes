@@ -54,9 +54,9 @@ You still need to install pre-requisites on **vm001**
     ```
 
 1. Login into your Azure account. Run this command and follow the instruction: 
-```
-az login
-```
+    ````sh
+    az login
+    ````
     > **NOTE:** Copy the sub ID of your Azure Account for next step  (id)
 
 ## Instructions
