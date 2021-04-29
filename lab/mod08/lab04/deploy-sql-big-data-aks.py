@@ -88,10 +88,10 @@ command = "az aks get-credentials --overwrite-existing --name "+CLUSTER_NAME+" -
 executeCmd (command)
 
 print("Creating SQL Big Data cluster:" +CLUSTER_NAME)
-command="azdata bdc config init --source aks-dev-test --path custom --force"
+command="azdata bdc config init --source aks-dev-test-ha --path custom --force"
 executeCmd (command)
 
-command="azdata bdc config replace -p custom/bdc.json -j ""metadata.name=" + CLUSTER_NAME + ""
+command="azdata bdc config replace --path custom/bdc.json -j ""metadata.name=" + CLUSTER_NAME + ""
 executeCmd (command)
 
 # Use this only if you are using a private registry different than default Micrososft registry (mcr). 
@@ -104,7 +104,7 @@ executeCmd (command)
 # command="azdata bdc config replace -c custom/control.json -j ""$.spec.controlPlane.spec.docker.imageTag=" + DOCKER_IMAGE_TAG + ""
 # executeCmd (command)
 
-command="azdata bdc create -p custom --accept-eula yes"
+command="azdata bdc create -c custom --accept-eula yes"
 executeCmd (command)
 
 command="azdata login --namespace " + CLUSTER_NAME
