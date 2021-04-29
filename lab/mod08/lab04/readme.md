@@ -11,14 +11,16 @@ install pre-requisites on **vm001**
 
 1. run the following command to install all the pre-requisites 
     ```sh 
-    chmod +x setup_linux.sh
-
-    ./setup_linux.sh 
+    bash setup_linux.sh
     ```
 
 1. you will see output like this, means all OK.
     ```sh 
-
+    Verifying az is in path
+    Verifying azdata is in path
+    Verifying kubectl is in path
+    Verifying curl is in path
+    Verifying wget is in path           
     
 
     ```

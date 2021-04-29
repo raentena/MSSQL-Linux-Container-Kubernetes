@@ -1,7 +1,7 @@
 #!/bin/bash 
 # Install az, azdata and kubectl 
 
-rpm --import https://packages.microsoft.com/keys/microsoft.asc
+rpm --import https://packages.microsoft.com/keys/microsoft.asc &> /dev/null 
 
 if [ ! -f /etc/yum.repos.d/azure-cli.repo ]
 then 
@@ -33,7 +33,7 @@ fi
 
 if [ ! -f /etc/yum.repos.d/mssql-server.rep  ]
 then
-curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/prodAZDATA.repo
+curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/prodAZDATA.repo &> /dev/null 
 fi 
 
 yum install azure-cli azdata-cli kubectl -y &> /dev/null 
