@@ -38,7 +38,7 @@ VM_SIZE=input("Provide VM size for the AKS cluster - Press ENTER for using  `Sta
 AKS_NODE_COUNT=input("Provide number of worker nodes for AKS cluster - Press ENTER for using  `5`:").strip() or "5"
 
 #This is both Kubernetes cluster name and SQL Big Data cluster name
-CLUSTER_NAME=input("Provide name of AKS cluster and SQL big data cluster - Press ENTER for using  `sqlHA`:").strip() or "sqlHA"
+CLUSTER_NAME=input("Provide name of AKS cluster and SQL big data cluster - Press ENTER for using  `sqlha`:").strip() or "sqlha"
 
 #This password will be use for Controller user, Knox user and SQL Server Master SA accounts
 # 
@@ -86,10 +86,10 @@ command = "az aks get-credentials --overwrite-existing --name "+CLUSTER_NAME+" -
 executeCmd (command)
 
 print("Creating SQL Big Data cluster:" +CLUSTER_NAME)
-command="azdata bdc config init --source aks-dev-test --target custom --force"
+command="azdata bdc config init --source aks-dev-test --path custom --force"
 executeCmd (command)
 
-command="azdata bdc config replace -c custom/bdc.json -j ""metadata.name=" + CLUSTER_NAME + ""
+command="azdata bdc config replace -p custom/bdc.json -j ""metadata.name=" + CLUSTER_NAME + ""
 executeCmd (command)
 
 # Use this only if you are using a private registry different than default Micrososft registry (mcr). 
@@ -102,10 +102,10 @@ executeCmd (command)
 # command="azdata bdc config replace -c custom/control.json -j ""$.spec.controlPlane.spec.docker.imageTag=" + DOCKER_IMAGE_TAG + ""
 # executeCmd (command)
 
-command="azdata bdc create -c custom --accept-eula yes"
+command="azdata bdc create -p custom --accept-eula yes"
 executeCmd (command)
 
-command="azdata login -n " + CLUSTER_NAME
+command="azdata login --namespace " + CLUSTER_NAME
 executeCmd (command)
 
 print("")
