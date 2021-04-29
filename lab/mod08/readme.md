@@ -1,6 +1,6 @@
 # SQL Kubernetes Labs
 
-- kubernetes intro : Outdated Lab / Need to update 
+- kubernetes intro : Outdated Lab / Need to update / this was done for Kubernetes v 1.13 ( as of 2021 its v 1.19.9)
 
 - lab01 - Setup AKS and Deploy SQL on AKS
 
