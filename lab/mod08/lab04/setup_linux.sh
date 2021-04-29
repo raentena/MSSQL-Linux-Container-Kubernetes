@@ -36,7 +36,7 @@ then
 curl -o /etc/yum.repos.d/mssql-server.repo https://packages.microsoft.com/config/rhel/8/prodAZDATA.repo
 fi 
 
-yum install azure-cli azdata-cli kubectl -y 
+yum install azure-cli azdata-cli kubectl -y &> /dev/null 
 if [ $? -ne 0 ]
 then 
  echo 'installation failed for some reason... '
@@ -45,7 +45,6 @@ fi
 
 sleep 1 
 
-echo 'Installation of az cli , kubectl and azdata seems OK'
 
 for util in az azdata kubectl curl wget
     do
