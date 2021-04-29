@@ -2,6 +2,4 @@
 
 - Lab01 - mssql-conf 
 
-- Lab02 - 
-
-- Lab03 -
+- Lab02 - - NIL- 

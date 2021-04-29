@@ -52,7 +52,7 @@ install pre-requisites on **vm001**
 4. If the deployment is successful, you will receive information on the SQL BDC cluster endpoint 
     > **NOTE:** You can execute this command `azdata bdc endpoint list -o table` to view the endpoint details 
 
-5. You can use SSMS and Azure Data Studio to connect to SQL Server Master Instance Front-End and SQL Server Master Readable Secondary Replicas . Note the IP  and Port number 
+5. You can use SSMS  to connect to SQL Server Master Instance Front-End and SQL Server Master Readable Secondary Replicas . Note the IP  and Port number 
     > **NOTE:** username: **admin** password: **Pa55w0rd2019**
 
 #### Deploy Sample Database to BDC
@@ -64,28 +64,5 @@ install pre-requisites on **vm001**
     ```
     > **NOTE:** This command will download several database backup from MSFT and push that to SQL BDC Cluster and Add those Database into AG to make them HA. 
 
-2. While the previous command is running , you can monitor the progress in SSMS and Azure Data Studio
+2. While the previous command is running , you can monitor the progress in SSMS 
     > It will create 2 database called Sales and WideWorldImporters-Full database and add them into AG 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

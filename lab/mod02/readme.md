@@ -1,6 +1,6 @@
 # Install and Configure SQL Linux Module 
 
-- Lab01 - Install SQL on linux
+- Lab01 - Install SQL on RHEL Linux
 
 - Lab02 - Tune  Linux for SQL 
 
@@ -8,4 +8,4 @@
 
 - Lab04 - SQL FTS 
 
-- Lab05 - SQL SSiS  - DtXs
+- Lab05 - SQL SSiS  - 

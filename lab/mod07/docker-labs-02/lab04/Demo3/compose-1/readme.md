@@ -7,7 +7,7 @@
 
 ### Build and Verify  MSSQL 2019 Docker Image/Container 
 
-1. Navigate to ./mssql2019/ directory
+1. Navigate to ./mssql2019-cu5/ directory
 
 2. Review the Dockerfile 
    
@@ -15,7 +15,7 @@
 
 3. Build a new Custom mssql 2019 container image 
 
-    ` docker build . -t <DOCKER_HUB_ID>/mssql2019:v1 `
+    ` docker build . -t <DOCKER_HUB_ID>/mssql2019:cu5 `
 
 4. Create a docker volume to hold database files 
 
@@ -36,7 +36,7 @@
 
 5. Verify the build is successful by running the image as a container
 
-    ` docker run -d -p 1433:1433 --name mssql -v sql:/var/opt/mssql <DOCKER_HUB_ID>/mssql2019:v1 ` 
+    ` docker run -d -p 1433:1433 --name mssql -v sql:/var/opt/mssql <DOCKER_HUB_ID>/mssql2019:cu5 ` 
 
 6. Return to Windows 10 machine , and Use SSMS to connect to the newly deployed mssql2019 
 

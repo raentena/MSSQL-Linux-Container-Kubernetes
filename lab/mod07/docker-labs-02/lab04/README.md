@@ -53,8 +53,5 @@
 
     Use your browser to access vm002 public ip address and port 8082
 
-6. Create a sample Database and a Table with some Data using the phpMyAdmin 
-   >> This data/table will be used on SSMA exercise on Module 6
-
 
 

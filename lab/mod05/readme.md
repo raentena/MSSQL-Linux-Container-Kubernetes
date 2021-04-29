@@ -6,4 +6,4 @@
 
 - Lab03 - BCP 
 
-- Lab04 - SSiS Lab
+- Lab04 - SSiS Lab ( will update soon )
