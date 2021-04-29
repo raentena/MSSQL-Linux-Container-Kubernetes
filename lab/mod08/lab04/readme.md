@@ -58,29 +58,6 @@ You still need to install pre-requisites on **vm001**
 az login
 ```
 
-
-
-## Pre-requisites (windows)
-
-1. Install latest version of [az cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
-1. Running the script will require: [python minimum version 3.0](https://www.python.org/downloads)
-1. Install the latest version of [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
-1. Ensure you have installed `azdata` CLI (previously named mssqlctl) and its prerequisites:
-    - Install [pip3](https://pip.pypa.io/en/stable/installing/).
-    - Install/update requests package. Run the command below using elevated priviledges (sudo or admin cmd window):
-        ```
-        python -m pip install requests
-        python -m pip install requests --upgrade
-        ```
-    - Install latest version of the cluster management tool **azdata** using below command. Run the command below using elevated privileges (sudo or admin cmd window):
-        ```
-        pip3 install -r https://aka.ms/azdata
-        ```
-1. Login into your Azure account. Run this command:
-```
-az login
-```
-
 ## Instructions
 
 Run the script using:

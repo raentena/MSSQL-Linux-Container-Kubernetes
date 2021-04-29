@@ -25,7 +25,7 @@ def executeCmd (cmd):
 # MUST INPUT THESE VALUES!!!!!
 #
 SUBSCRIPTION_ID = input("Provide your Azure subscription ID:").strip()
-GROUP_NAME = input("Provide Azure resource group name to be created:").strip()
+GROUP_NAME = input("Provide Azure resource group name to be created - Press ENTER for using  `sql_rg`:").strip() or "sql_rg"
 # Use this only if you are using a private registry different than default Micrososft registry (mcr). 
 #DOCKER_USERNAME = input("Provide your Docker username:").strip()
 #DOCKER_PASSWORD  = getpass.getpass("Provide your Docker password:").strip()
@@ -33,17 +33,17 @@ GROUP_NAME = input("Provide Azure resource group name to be created:").strip()
 #
 # Optionally change these configuration settings
 #
-AZURE_REGION=input("Provide Azure region - Press ENTER for using `westus`:").strip() or "westus"
-VM_SIZE=input("Provide VM size for the AKS cluster - Press ENTER for using  `Standard_L8s`:").strip() or "Standard_L8s"
-AKS_NODE_COUNT=input("Provide number of worker nodes for AKS cluster - Press ENTER for using  `1`:").strip() or "1"
+AZURE_REGION=input("Provide Azure region - Press ENTER for using `southeastasia`:").strip() or "southeastasia"
+VM_SIZE=input("Provide VM size for the AKS cluster - Press ENTER for using  `Standard_E8s_v3`:").strip() or "Standard_E8s_v3"
+AKS_NODE_COUNT=input("Provide number of worker nodes for AKS cluster - Press ENTER for using  `5`:").strip() or "5"
 
 #This is both Kubernetes cluster name and SQL Big Data cluster name
-CLUSTER_NAME=input("Provide name of AKS cluster and SQL big data cluster - Press ENTER for using  `sqlbigdata`:").strip() or "sqlbigdata"
+CLUSTER_NAME=input("Provide name of AKS cluster and SQL big data cluster - Press ENTER for using  `sqlHA`:").strip() or "sqlHA"
 
 #This password will be use for Controller user, Knox user and SQL Server Master SA accounts
 # 
 AZDATA_USERNAME=input("Provide username to be used for Controller and SQL Server master accounts - Press ENTER for using  `admin`:").strip() or "admin"
-AZDATA_PASSWORD = getpass.getpass("Provide password to be used for Controller user, Knox user (root) and SQL Server Master accounts - Press ENTER for using  `MySQLBigData2019`").strip() or "MySQLBigData2019"
+AZDATA_PASSWORD = getpass.getpass("Provide password to be used for Controller user, Knox user (root) and SQL Server Master accounts - Press ENTER for using  `Pa55w0rd2019`").strip() or "Pa55w0rd2019"
 
 # Docker registry details
 # Use this only if you are using a private registry different than mcr. If so, make sure you are also setting the environment variables for DOCKER_USERNAME and DOCKER_PASSWORD
@@ -112,4 +112,3 @@ print("")
 print("SQL Server big data cluster endpoints: ")
 command="azdata bdc endpoint list -o table"
 executeCmd(command)
-
