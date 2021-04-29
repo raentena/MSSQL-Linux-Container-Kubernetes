@@ -12,7 +12,7 @@ services:
             - "1433:1433"
     
     webapp:
-        image: stv707/webapp:lastest
+        image: stv707/webapp:latest
         container_name: webapp
         restart: always
         depends_on:

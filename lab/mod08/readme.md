@@ -7,3 +7,5 @@
 - lab02 - docker to Kubernetes 
 
 - lab03 - AKS based machine HA for SQL 
+
+* update are coming !
