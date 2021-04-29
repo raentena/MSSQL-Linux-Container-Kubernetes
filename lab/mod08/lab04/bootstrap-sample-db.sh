@@ -24,7 +24,7 @@ AW_WWI_SAMPLES="--install-extra-samples"
 SQL_MASTER_PORT=$5
 KNOX_PORT=$6
 
-# set the user and pass variable here ( insecure, but its just for DEMO and Training , so I just don't give a F*** )
+# set the user and pass variable here ( insecure, but its just for DEMO and Training )
 AZDATA_USERNAME=admin
 AZDATA_PASSWORD=Pa55w0rd2019
 
@@ -79,19 +79,7 @@ $DEBUG kubectl cp tpcxbb_1gb.bak $CLUSTER_NAMESPACE/$MASTER_POD_NAME:var/opt/mss
 
 if [ "$AW_WWI_SAMPLES" == "--install-extra-samples" ]
 then
-    for file in AdventureWorks2016_EXT.bak AdventureWorksDW2016_EXT.bak
-    do
-        if [ ! -f $file ]
-        then
-            echo Downloading $file sample database backup file...
-            $DEBUG curl -L -G "https://github.com/Microsoft/sql-server-samples/releases/download/adventureworks/$file" -o $file
-        fi
-        echo Copying $file database backup file to SQL Master instance...
-        $DEBUG kubectl cp $file $CLUSTER_NAMESPACE/$MASTER_POD_NAME:var/opt/mssql/data -c mssql-server || (echo $ERROR_MESSAGE && exit 1)
-    done
-
-
-    for file in WideWorldImporters-Full.bak WideWorldImportersDW-Full.bak
+    for file in WideWorldImporters-Full.bak 
     do
         if [ ! -f $file ]
         then
@@ -121,12 +109,8 @@ $DEBUG kubectl exec $MASTER_POD_NAME -n $CLUSTER_NAMESPACE -c mssql-server -i -t
 
 if [ "$AW_WWI_SAMPLES" == "--install-extra-samples" ]
 then
-    for file in AdventureWorks2016_EXT.bak AdventureWorksDW2016_EXT.bak
-    do
-        $DEBUG kubectl exec $MASTER_POD_NAME -n $CLUSTER_NAMESPACE -c mssql-server -i -t -- bash -c "rm -rvf /var/opt/mssql/data/$file"
-    done
 
-    for file in WideWorldImporters-Full.bak WideWorldImportersDW-Full.bak
+    for file in WideWorldImporters-Full.bak 
     do
         $DEBUG kubectl exec $MASTER_POD_NAME -n $CLUSTER_NAMESPACE -c mssql-server -i -t -- bash -c "rm -rvf /var/opt/mssql/data/$file"
     done

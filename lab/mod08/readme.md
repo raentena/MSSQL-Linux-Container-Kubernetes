@@ -8,4 +8,4 @@
 
 - lab03 - AKS based machine HA for SQL 
 
-* update are coming !
+- lab04 - SQL BDC with SQL AG 

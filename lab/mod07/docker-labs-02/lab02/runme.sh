@@ -10,9 +10,12 @@ if [ ! -z ${DUSER} ]  ; then echo "we got DBUSER" ; else export DBUSER=sa ; fi
 
 if [ ! -z ${DBSVR} ]  ; then echo "we got DBSVR"  ; else export DBSVR=mssql ; fi
 
-export DB=WideWorldImporters
-export DBPORT=1433
-export DPOPT=false
+if [ ! -z ${DB} ]  ; then echo "we got DB"  ; else export DB=WideWorldImporters ; fi
+
+if [ ! -z ${DBPORT} ]  ; then echo "we got DBPORT"  ; else export DBPORT=1433 ; fi
+
+if [ ! -z ${DBOPT} ]  ; then echo "we got DBOPT"  ; else export DBOPT=false ; fi
+
 }
 
 function gendbconf {
@@ -21,10 +24,10 @@ cat <<EOF
     "user": "${DBUSER}",
     "password": "${DBPASS}",
     "server": "${DBSVR}",
-    "database": "WideWorldImporters",
-    "port": 1433,
+    "database": "${DB}",
+    "port": "${DBPORT}",
     "options": {
-        "encrypt": false
+        "encrypt": ${DBOPT}
     }
 }
 EOF
