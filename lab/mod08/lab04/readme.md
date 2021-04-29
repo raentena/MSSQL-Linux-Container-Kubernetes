@@ -68,11 +68,10 @@ Run the script using:
     ````
 
 >**Note**
-    >
-    >If you have both python3 and python2 on your client machine and in the path, you will have to run the command using python3:
-    >```
-    >python3 deploy-sql-big-data-aks.py
-    >```
+    If you have both python3 and python2 on your client machine and in the path, you will have to run the command using python3:
+    ````sh
+    python3 deploy-sql-big-data-aks.py
+    ````
 
 
 When prompted, provide your input for Azure subscription ID, Azure resource group to create the resources in.  Optionally, you can also provide your input for below configurations or use the defaults provided:
