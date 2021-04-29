@@ -60,6 +60,7 @@ You still need to install pre-requisites on **vm001**
     > **NOTE:** Copy the sub ID of your Azure Account for next step  (id)
 
 ## Instructions
+#### Deploy SQL Big Data HA Cluster 
 
 Run the script using:
 ```
