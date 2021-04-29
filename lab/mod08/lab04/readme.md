@@ -7,10 +7,21 @@ If you can't install the pre-requisites, consider running the script from **vm00
 
 You still need to install pre-requisites on **vm001** 
 
+## Pre-requisites (vm001 [ RHEL 7/8 ] )
+
+1. Install latest version of [az cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
+1. Running the script will require: [python minimum version 3.0](https://www.python.org/downloads)
+1. Install the latest version of [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
+
+
+1. Login into your Azure account. Run this command and follow the instruction: 
+```
+az login
+```
 
 
 
-## Pre-requisites
+## Pre-requisites (windows)
 
 1. Install latest version of [az cli](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 1. Running the script will require: [python minimum version 3.0](https://www.python.org/downloads)
