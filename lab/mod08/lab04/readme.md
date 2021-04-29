@@ -42,7 +42,7 @@ install pre-requisites on **vm001**
 
 2. When prompted, provide your input for Azure subscription ID (the id you copied earlier ), Azure resource group to create the resources in.  
 
-3. This script will prompt for input, you can USE DEFAULT ( recommended )
+3. This script will prompt for input, you can USE DEFAULT values on prompt ( just press enter  )
 
 4. Optionally, you can also provide your input for below configurations or use the defaults provided:
 
@@ -54,6 +54,8 @@ install pre-requisites on **vm001**
     - username - this is the username for the accounts provisioned during deployment for the controller admin account and SQL Server master instance account. Note that **sa** SQL Server account is disabled automatically for you, as a best practice. Username for Knox gateway account is going to be **root**.
 
     > **NOTE:** Deployment will take 16min tops  ( 5 node Kubernetes, with 24 pods thats hold SQL BDC / SQL AG ). You need to wait until the deployment is successful before proceeding to next step.  ( get a coffee )
+
+    > **NOTE:** If the deployment fails for some reason, you need to do manual clean up before rerunning the script, otherwise it will fail again. You been WARNED!!
 
 #### Deploy Sample Database to BDC 
 
