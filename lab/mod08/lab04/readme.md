@@ -16,7 +16,7 @@ You still need to install pre-requisites on **vm001**
     ./setup_linux.sh 
     ```
 
-1. you will see output like this, means all OK , else , refer Steven
+1. you will see output like this, means all OK.
     ```sh 
     Installation of az cli , kubectl and azdata seems OK
     Client Version: version.Info{Major:"1", Minor:"21", GitVersion:"v1.21.0", GitCommit:"cb303e613a121a29364f75cc67d3d580833a7479", GitTreeState:"clean", BuildDate:"2021-04-08T16:31:21Z", GoVersion:"go1.16.1", Compiler:"gc", Platform:"linux/amd64"}
@@ -73,7 +73,7 @@ python deploy-sql-big-data-aks.py
 >```
 
 
-When prompted, provide your input for Azure subscription ID, Azure resource group to create the resources in, and Docker credentials. Optionally, you can also provide your input for below configurations or use the defaults provided:
+When prompted, provide your input for Azure subscription ID, Azure resource group to create the resources in.  Optionally, you can also provide your input for below configurations or use the defaults provided:
 - azure_region
 - vm_size - we recommend to use a VM size to accommodate your workload. For an optimal experience while you are validating basic scenarios, we recommend at least 8 vCPUs and 64GB memory across all agent nodes in the cluster. The script uses **Standard_L8s** as default. A default size configuration also uses about 24 disks for persistent volume claims across all components.
 - aks_node_count - this is the number of the worker nodes for the AKS cluster, excluding master node. The script is using a default of 1 agent node. This is the minimum required for this VM size to have enough resources and disks to provision all the necessary persistent volumes.
