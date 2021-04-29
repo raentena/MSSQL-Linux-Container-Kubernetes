@@ -21,8 +21,6 @@ install pre-requisites on **vm001**
     Verifying kubectl is in path
     Verifying curl is in path
     Verifying wget is in path           
-    
-
     ```
     > **NOTE:** This script will expand /tmp to 4GB ( required when we want to download sample DB and Push to BDC Cluster)
 
@@ -41,25 +39,36 @@ install pre-requisites on **vm001**
     python3 deploy-sql-big-data-aks.py
     ```
 
-
 2. When prompted, provide your input for Azure subscription ID (the id you copied earlier ), Azure resource group to create the resources in.  
 
 3. This script will prompt for input, you can USE DEFAULT values on prompt ( just press enter  )
 
-4. Optionally, you can also provide your input for below configurations or use the defaults provided:
+    > **NOTE:** Do NOT enter any custom value on the prompt, as this action will fail the later script
 
-    - azure_region
-    - vm_size - we recommend to use a VM size to accommodate your workload. For an optimal experience while you are validating basic scenarios, we recommend at least 8 vCPUs and 64GB memory across all agent nodes in the cluster. The script uses **Standard_L8s** as default. A default size configuration also uses about 24 disks for persistent volume claims across all components.
-    - aks_node_count - this is the number of the worker nodes for the AKS cluster, excluding master node. The script is using a default of 5 agent node. This is the minimum required for this VM size to have enough resources and disks to provision all the necessary persistent volumes.
-    - cluster_name - this value is used for both AKS cluster and SQL big data cluster created on top of AKS. Note that the name of the SQL big data cluster is going to be a Kubernetes namespace
-    - password - same value is going to be used for all accounts that require user password input: SQL Server master instance account created for the below **username**, controller user and Knox **root** user
-    - username - this is the username for the accounts provisioned during deployment for the controller admin account and SQL Server master instance account. Note that **sa** SQL Server account is disabled automatically for you, as a best practice. Username for Knox gateway account is going to be **root**.
-
-    > **NOTE:** Deployment will take 16min tops  ( 5 node Kubernetes, with 24 pods thats hold SQL BDC / SQL AG ). You need to wait until the deployment is successful before proceeding to next step.  ( get a coffee )
+    > **NOTE:** Cluster creation can take a significant amount of time depending on configuration, network speed, and the number of nodes in the cluster. ( Tops @ 20 min, it may go 30 min  )
 
     > **NOTE:** If the deployment fails for some reason, you need to do manual clean up before rerunning the script, otherwise it will fail again. You been WARNED!!
 
-#### Deploy Sample Database to BDC 
+4. If the deployment is successful, you will receive information on the SQL BDC cluster endpoint 
+    > **NOTE:** You can execute this command `azdata bdc endpoint list -o table` to view the endpoint details 
+
+5. You can use SSMS and Azure Data Studio to connect to SQL Server Master Instance Front-End and SQL Server Master Readable Secondary Replicas . Note the IP  and Port number 
+    > **NOTE:** username: **admin** password: **Pa55w0rd2019**
+
+#### Deploy Sample Database to BDC
+
+1. In this step you will deploy sample database ( Sales and WideWorldImporters ) to the SQL BDC Cluster 
+
+    ```sh 
+    bash bootstrap-sample-db.sh 
+    ```
+    > **NOTE:** This command will download several database backup from MSFT and push that to SQL BDC Cluster and Add those Database into AG to make them HA. 
+
+2. While the previous command is running , you can monitor the progress in SSMS and Azure Data Studio
+    > It will create 2 database called Sales and WideWorldImporters-Full database and add them into AG 
+
+
+
 
 
 
