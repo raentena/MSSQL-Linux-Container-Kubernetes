@@ -17,7 +17,7 @@ ERROR_MESSAGE="Bootstrap of the sample database failed. Output and error files a
 #: "${DEBUG=}"
 
 # Save the input parameters
-CLUSTER_NAMESPACE=$1
+CLUSTER_NAMESPACE=sqlha
 SQL_MASTER_ENDPOINT=$(kubectl get svc -n sqlha | grep ^master-svc-external | awk '{print $4}')
 KNOX_ENDPOINT=$(kubectl get svc -n sqlha | grep ^gateway-svc-external | awk '{print $4}')
 AW_WWI_SAMPLES="--install-extra-samples"
