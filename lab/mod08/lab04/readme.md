@@ -63,12 +63,14 @@ You still need to install pre-requisites on **vm001**
 #### Deploy SQL Big Data HA Cluster 
 
 Run the script using:
+    
     ````sh
     python deploy-sql-big-data-aks.py
     ````
 
 >**Note**
     If you have both python3 and python2 on your client machine and in the path, you will have to run the command using python3:
+    
     ````sh
     python3 deploy-sql-big-data-aks.py
     ````
