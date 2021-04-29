@@ -154,14 +154,3 @@
 5. Use your web browser to navigate to vm002 public ip address and verify you can access the webapp and its connected to MSSQL. 
 
 END
-
-
-
-
-
-
-
-
-
-
-

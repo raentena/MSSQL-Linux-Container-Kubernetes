@@ -187,7 +187,7 @@ function reinit()
     rm -rf tmpdata 
   fi 
   touch tmpdata
-  for i in vm001_rg vm002_rg k8s_rg cloud_rg aks_rg
+  for i in vm001_rg vm002_rg k8s_rg cloud_rg aks_rg sql001rg
   do 
    az group list | grep $i &> /dev/null
    if  [ $? -eq 0  ]
@@ -210,6 +210,8 @@ function reinit()
     'cloud_rg')   az group delete -n cloud_rg 
                   break ;;
     'aks_rg'  )   az group delete -n aks_rg 
+                  break ;; 
+    'sql001rg')  az group delete -n sql001rg 
                   break ;; 
     'Quit'    )   echo "Exit" && break ;;
     esac
