@@ -4,4 +4,4 @@
 
 - lab-2 : Docker Features / docker build / compose / volume / hub access 
 
-* update are coming !
+* update are coming ! Stay Tuned
