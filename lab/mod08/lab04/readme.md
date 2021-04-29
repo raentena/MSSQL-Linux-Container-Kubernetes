@@ -55,9 +55,9 @@ You still need to install pre-requisites on **vm001**
     > **NOTE:** This script will expand /tmp to 4GB ( required when we want to download sample DB and Push to BDC Cluster)
 
 1. Login into your Azure account. Run this command and follow the instruction: 
-    ````sh
+    ```sh
     az login
-    ````
+    ```
     > **NOTE:** Copy the sub ID of your Azure Account for next step  (id)
 
 ## Instructions
