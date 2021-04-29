@@ -66,3 +66,9 @@ install pre-requisites on **vm001**
 
 2. While the previous command is running , you can monitor the progress in SSMS 
     > It will create 2 database called Sales and WideWorldImporters-Full database and add them into AG 
+
+#### Use Azure Data Studio 
+
+1. This is a GUI application, please explore thyself 
+
+2. Follow along with Steven to see some awesome stuff on ADS 
