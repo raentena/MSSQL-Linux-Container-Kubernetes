@@ -6,7 +6,7 @@ function setallvar {
 
 if [ ! -z ${DBPASS} ] ; then echo "we got DBPASS" ; else export DBPASS=Pa55w0rd2019 ; fi
 
-if [ ! -z ${DUSER} ]  ; then echo "we got DBUSER" ; else export DBUSER=sa ; fi
+if [ ! -z ${DBUSER} ]  ; then echo "we got DBUSER" ; else export DBUSER=sa ; fi
 
 if [ ! -z ${DBSVR} ]  ; then echo "we got DBSVR"  ; else export DBSVR=mssql ; fi
 
