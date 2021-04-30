@@ -588,7 +588,3 @@ Your learned in this activity how Kubernetes provides basic high-availability fo
 - [Deploy SQL Server in Azure Kubernetes Service](https://docs.microsoft.com/en-us/sql/linux/tutorial-sql-server-containers-kubernetes)
 
 <p style="border-bottom: 1px solid lightgrey;"></p>
-
-<h2><img style="float: left; margin: 0px 15px 15px 0px;" src="https://github.com/microsoft/sqlworkshops/blob/master/graphics/geopin.png?raw=true"><b>     Next Steps</b></h2>
-
-Next, Continue to <a href="./08_DataVirtualization.md" target="_blank"><i>Data Virtualization</i></a>.
